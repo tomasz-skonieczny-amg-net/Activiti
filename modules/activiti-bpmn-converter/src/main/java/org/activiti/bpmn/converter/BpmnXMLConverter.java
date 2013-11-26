@@ -226,11 +226,13 @@ public class BpmnXMLConverter implements BpmnXMLConstants {
     InputStreamReader in = null;
     try {
       in = new InputStreamReader(inputStreamProvider.getInputStream(), encoding);
-      try {
-        System.out.println(readString(inputStreamProvider.getInputStream()));
-    } catch (IOException e1) {
-        e1.printStackTrace();
-    }
+      if (LOGGER.isDebugEnabled()) {
+          try {
+              LOGGER.debug(readString(inputStreamProvider.getInputStream()));
+          } catch (IOException e1) {
+              e1.printStackTrace();
+          }
+      }
       XMLStreamReader xtr = xif.createXMLStreamReader(in);
   
       try {
