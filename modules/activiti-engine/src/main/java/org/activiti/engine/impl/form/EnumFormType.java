@@ -67,4 +67,8 @@ public class EnumFormType extends AbstractFormType {
     }
   }
 
+public Map<String, String> getValues() {
+    return values;
+}
+
 }

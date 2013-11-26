@@ -1,3 +1,4 @@
+
 /* Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -28,6 +29,8 @@ public class FormPropertyImpl implements FormProperty {
   protected boolean isRequired;
   protected boolean isReadable;
   protected boolean isWritable;
+  protected String cssClass;
+  protected String radioButtonGroup;
 
   protected String value;
 
@@ -38,6 +41,8 @@ public class FormPropertyImpl implements FormProperty {
     this.isRequired = formPropertyHandler.isRequired();
     this.isReadable = formPropertyHandler.isReadable();
     this.isWritable = formPropertyHandler.isWritable();
+    this.cssClass = formPropertyHandler.getCssClass();
+    this.radioButtonGroup = formPropertyHandler.getRadioButtonGroup();
   }
 
   public String getId() {
@@ -71,4 +76,20 @@ public class FormPropertyImpl implements FormProperty {
   public boolean isWritable() {
     return isWritable;
   }
+
+public String getCssClass() {
+    return cssClass;
+}
+
+public void setCssClass(String cssClass) {
+    this.cssClass = cssClass;
+}
+
+public String getRadioButtonGroup() {
+    return radioButtonGroup;
+}
+
+public void setRadioButtonGroup(String radioButtonGroup) {
+    this.radioButtonGroup = radioButtonGroup;
+}
 }

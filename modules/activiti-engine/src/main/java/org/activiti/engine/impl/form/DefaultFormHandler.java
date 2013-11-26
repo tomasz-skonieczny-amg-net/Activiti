@@ -54,9 +54,13 @@ public class DefaultFormHandler implements FormHandler {
       .getFormTypes();
     
     for (org.activiti.bpmn.model.FormProperty formProperty : formProperties) {
+        
       FormPropertyHandler formPropertyHandler = new FormPropertyHandler();
       formPropertyHandler.setId(formProperty.getId());
       formPropertyHandler.setName(formProperty.getName());
+      
+      formPropertyHandler.setCssClass(formProperty.getCssClass());
+      formPropertyHandler.setRadioButtonGroup(formProperty.getRadioButtonGroup());
       
       AbstractFormType type = formTypes.parseFormPropertyType(formProperty);
       formPropertyHandler.setType(type);

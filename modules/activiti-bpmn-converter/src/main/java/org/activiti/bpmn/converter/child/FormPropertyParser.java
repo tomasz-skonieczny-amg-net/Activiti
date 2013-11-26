@@ -55,6 +55,14 @@ public class FormPropertyParser extends BaseChildElementParser {
       property.setWriteable(Boolean.valueOf(xtr.getAttributeValue(null, ATTRIBUTE_FORM_WRITABLE)));
     }
     
+    if (StringUtils.isNotEmpty(xtr.getAttributeValue(null, ATTRIBUTE_FORM_CSSCLASS))) {
+        property.setCssClass(xtr.getAttributeValue(null, ATTRIBUTE_FORM_CSSCLASS));
+    }
+    
+    if (StringUtils.isNotEmpty(xtr.getAttributeValue(null, ATTRIBUTE_FORM_RADIOGROUP))) {
+        property.setRadioButtonGroup(xtr.getAttributeValue(null, ATTRIBUTE_FORM_RADIOGROUP));
+    }
+    
     boolean readyWithFormProperty = false;
     try {
       while (readyWithFormProperty == false && xtr.hasNext()) {

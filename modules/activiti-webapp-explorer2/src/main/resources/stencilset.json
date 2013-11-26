@@ -289,6 +289,23 @@
           "value" : "No"
         } ]
       }, {
+        "id" : "formproperty_cssclass",
+        "name" : "CSS class",
+        "name_de" : "CSS class",
+        "type" : "String",
+        "value" : "Yes",
+        "width" : 100
+      }, {
+
+        "id" : "formproperty_radiobuttongroup",
+        "name" : "Radio button group",
+        "name_de" : "Radio button group",
+        "type" : "String",
+        "value" : "Yes",
+        "optional" : true,
+        "width" : 150
+      }, {
+      
         "id" : "formproperty_formvalues",
         "name" : "Form values",
         "name_de" : "Typ",

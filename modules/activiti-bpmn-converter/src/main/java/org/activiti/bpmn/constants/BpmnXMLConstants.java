@@ -222,6 +222,8 @@ public interface BpmnXMLConstants {
   public static final String ATTRIBUTE_FORM_REQUIRED = "required";
   public static final String ATTRIBUTE_FORM_DEFAULT = "default";
   public static final String ATTRIBUTE_FORM_DATEPATTERN = "datePattern";
+  public static final String ATTRIBUTE_FORM_CSSCLASS = "cssClass";
+  public static final String ATTRIBUTE_FORM_RADIOGROUP = "radioButtonGroup";
   public static final String ELEMENT_VALUE = "value";
   
   public static final String ELEMENT_FIELD = "field";

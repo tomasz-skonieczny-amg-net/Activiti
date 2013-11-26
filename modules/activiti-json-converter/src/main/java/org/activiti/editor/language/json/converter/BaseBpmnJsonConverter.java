@@ -231,6 +231,8 @@ public abstract class BaseBpmnJsonConverter implements EditorJsonConstants, Sten
       propertyItemNode.put(PROPERTY_FORM_ID, property.getId());
       propertyItemNode.put(PROPERTY_FORM_NAME, property.getName());
       propertyItemNode.put(PROPERTY_FORM_TYPE, property.getType());
+      propertyItemNode.put(PROPERTY_FORM_CSSCLASS, property.getCssClass());
+      propertyItemNode.put(PROPERTY_FORM_RADIOGROUP, property.getRadioButtonGroup());
       if (StringUtils.isNotEmpty(property.getExpression())) {
         propertyItemNode.put(PROPERTY_FORM_EXPRESSION, property.getExpression());
       } else {
@@ -400,6 +402,9 @@ public abstract class BaseBpmnJsonConverter implements EditorJsonConstants, Sten
             readWriteReqNode = getValueAsString(PROPERTY_FORM_WRITEABLE, formNode);
             if (PROPERTY_VALUE_NO.equalsIgnoreCase(readWriteReqNode))
                 formProperty.setWriteable(false);
+            
+            formProperty.setCssClass(getValueAsString(PROPERTY_FORM_CSSCLASS, formNode));
+            formProperty.setRadioButtonGroup(getValueAsString(PROPERTY_FORM_RADIOGROUP, formNode));
             
             formValuesNode = formNode.get(PROPERTY_FORM_FORM_VALUES);
             if (formValuesNode != null && StringUtils.isNotEmpty(formValuesNode.asText()) && !("undefined".equals(formValuesNode.asText()))) {

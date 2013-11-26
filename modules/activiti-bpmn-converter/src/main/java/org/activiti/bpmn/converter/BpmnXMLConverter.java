@@ -14,8 +14,10 @@ package org.activiti.bpmn.converter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -193,6 +195,19 @@ public class BpmnXMLConverter implements BpmnXMLConstants {
     return convertToBpmnModel(inputStreamProvider, validateSchema, enableSafeBpmnXml, DEFAULT_ENCODING);
   }
   
+  static String readString(InputStream is) throws IOException {
+      char[] buf = new char[2048];
+      Reader r = new InputStreamReader(is, "UTF-8");
+      StringBuilder s = new StringBuilder();
+      while (true) {
+        int n = r.read(buf);
+        if (n < 0)
+          break;
+        s.append(buf, 0, n);
+      }
+      return s.toString();
+    }
+  
   public BpmnModel convertToBpmnModel(InputStreamProvider inputStreamProvider, boolean validateSchema, boolean enableSafeBpmnXml, String encoding) {
     XMLInputFactory xif = XMLInputFactory.newInstance();
 
@@ -211,6 +226,11 @@ public class BpmnXMLConverter implements BpmnXMLConstants {
     InputStreamReader in = null;
     try {
       in = new InputStreamReader(inputStreamProvider.getInputStream(), encoding);
+      try {
+        System.out.println(readString(inputStreamProvider.getInputStream()));
+    } catch (IOException e1) {
+        e1.printStackTrace();
+    }
       XMLStreamReader xtr = xif.createXMLStreamReader(in);
   
       try {
@@ -224,6 +244,7 @@ public class BpmnXMLConverter implements BpmnXMLConstants {
   
           // The input stream is closed after schema validation
           in = new InputStreamReader(inputStreamProvider.getInputStream(), encoding);
+          
           xtr = xif.createXMLStreamReader(in);
         }
   

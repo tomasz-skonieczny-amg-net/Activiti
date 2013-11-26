@@ -37,6 +37,8 @@ public class FormPropertyHandler {
   protected String variableName;
   protected Expression variableExpression;
   protected Expression defaultExpression;
+  protected String cssClass;
+  protected String radioButtonGroup;
   
   public FormProperty createFormProperty(ExecutionEntity execution) {
     FormPropertyImpl formProperty = new FormPropertyImpl(this);
@@ -185,4 +187,20 @@ public class FormPropertyHandler {
   public void setWritable(boolean isWritable) {
     this.isWritable = isWritable;
   }
+
+public String getCssClass() {
+    return cssClass;
+}
+
+public void setCssClass(String cssClass) {
+    this.cssClass = cssClass;
+}
+
+public String getRadioButtonGroup() {
+    return radioButtonGroup;
+}
+
+public void setRadioButtonGroup(String radioButtonGroup) {
+    this.radioButtonGroup = radioButtonGroup;
+}
 }

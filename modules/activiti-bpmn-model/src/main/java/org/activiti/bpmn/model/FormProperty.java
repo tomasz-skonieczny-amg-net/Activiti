@@ -29,6 +29,8 @@ public class FormProperty extends BaseElement {
   protected boolean readable = true;
   protected boolean writeable = true;
   protected boolean required;
+  protected String cssClass;
+  protected String radioButtonGroup;
   protected List<FormValue> formValues = new ArrayList<FormValue>();
 
   public String getName() {
@@ -91,4 +93,16 @@ public class FormProperty extends BaseElement {
   public void setFormValues(List<FormValue> formValues) {
     this.formValues = formValues;
   }
+  public String getCssClass() {
+	return cssClass;
+  }
+  public void setCssClass(String cssClass) {
+	this.cssClass = cssClass;
+  }
+public String getRadioButtonGroup() {
+    return radioButtonGroup;
+}
+public void setRadioButtonGroup(String radioButtonGroup) {
+    this.radioButtonGroup = radioButtonGroup;
+}
 }
