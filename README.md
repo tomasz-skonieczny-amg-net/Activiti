@@ -6,3 +6,5 @@ Activiti is a light-weight workflow and Business Process Management (BPM) Platfo
 Forked Activiti
 ========
 
+Added new activiti-modeler userTask fields: cssClass, radioButtonGroup
+
