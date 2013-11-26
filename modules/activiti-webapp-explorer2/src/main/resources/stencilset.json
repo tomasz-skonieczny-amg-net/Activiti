@@ -216,6 +216,12 @@
           "title_de" : "Enum",
           "value" : "enum",
           "refToView" : ""
+        }, {
+          "id" : "c6",
+          "title" : "List",
+          "title_de" : "List",
+          "value" : "list",
+          "refToView" : ""
         } ]
       }, {
         "id" : "formproperty_expression",

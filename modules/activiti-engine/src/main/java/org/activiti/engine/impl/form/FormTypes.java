@@ -47,8 +47,17 @@ public class FormTypes {
       for (FormValue formValue: formProperty.getFormValues()) {
         values.put(formValue.getId(), formValue.getName());
       }
-      formType = new EnumFormType(values);
       
+      formType = new EnumFormType(values);
+    } else if ("list".equals(formProperty.getType())) {
+        
+        Map<String, String> values = new LinkedHashMap<String, String>();
+        for (FormValue formValue: formProperty.getFormValues()) {
+          values.put(formValue.getId(), formValue.getName());
+        }
+        
+        formType = new ListFormType(values);
+        
     } else if (StringUtils.isNotEmpty(formProperty.getType())) {
       formType = formTypes.get(formProperty.getType());
       if (formType == null) {

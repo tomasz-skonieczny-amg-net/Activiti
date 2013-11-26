@@ -21,6 +21,11 @@
     <!-- mail server configurations -->
     <property name="mailServerPort" value="5025" />
     <property name="history" value="full" />
+	<property name="customFormTypes">
+	  <list>
+	    <bean class="org.activiti.engine.impl.form.ListFormType"/>
+	  </list>
+	</property>
   </bean>
 
 </beans>
