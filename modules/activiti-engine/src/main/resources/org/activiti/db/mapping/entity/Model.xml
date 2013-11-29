@@ -37,6 +37,25 @@
       EDITOR_SOURCE_EXTRA_VALUE_ID_ = #{editorSourceExtraValueId, jdbcType=VARCHAR}
     where ID_ = #{id, jdbcType=VARCHAR} and REV_ = #{revision, jdbcType=INTEGER}
   </update>
+  
+    <!-- MODEL INSERT -->
+  
+  <insert id="insertAMGModel" parameterType="org.activiti.engine.impl.persistence.entity.ModelEntity">
+    insert into BPM_WEB_FLOW_DATA(ID, NAME, CONTENT, META_INFO)
+    values(#{id, jdbcType=INTEGER}, 
+           #{name, jdbcType=VARCHAR}, 
+           #{bytes, jdbcType=BINARY}, 
+           #{metaInfo, jdbcType=VARCHAR}
+  </insert>
+  
+  <!-- MODEL UPDATE -->
+  <update id="updateAMGModel" parameterType="org.activiti.engine.impl.persistence.entity.ModelEntity">
+    update BPM_WEB_FLOW_DATA set
+      NAME = #{name, jdbcType=VARCHAR}, 
+      CONTENT = #{bytes, jdbcType=BINARY}, 
+      META_INFO = #{metaInfo, jdbcType=VARCHAR}
+    where ID = #{id, jdbcType=INTEGER}
+  </update>
 
   
   <!-- MODEL DELETE -->
@@ -60,6 +79,13 @@
     <result property="deploymentId" column="DEPLOYMENT_ID_" jdbcType="VARCHAR" />
     <result property="editorSourceValueId" column="EDITOR_SOURCE_VALUE_ID_" jdbcType="VARCHAR" />
     <result property="editorSourceExtraValueId" column="EDITOR_SOURCE_EXTRA_VALUE_ID_" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="AMGModelResultMap" type="org.activiti.engine.impl.persistence.entity.ModelEntity">
+    <id property="id" column="ID" jdbcType="INTEGER" />
+    <result property="name" column="NAME" jdbcType="VARCHAR" />
+    <result property="metaInfo" column="META_INFO" jdbcType="VARCHAR" />
+    <result property="bytes" column="CONTENT" jdbcType="VARCHAR" />
   </resultMap>
 
   <!-- MODEL SELECT -->
@@ -121,6 +147,10 @@
   
   <select id="selectModel" parameterType="string" resultMap="modelResultMap">
     select * from ${prefix}ACT_RE_MODEL where ID_ = #{id}
+  </select>
+  
+  <select id="selectAMGModel" parameterType="string" resultMap="AMGModelResultMap">
+    select * from BPM_WEB_FLOW_DATA where ID = #{id}
   </select>
   
   <!-- mysql specific -->

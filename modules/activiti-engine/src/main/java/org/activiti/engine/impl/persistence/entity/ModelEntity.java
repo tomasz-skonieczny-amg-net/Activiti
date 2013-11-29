@@ -43,6 +43,7 @@ public class ModelEntity implements Serializable, Model, HasRevision, Persistent
   protected String deploymentId;
   protected String editorSourceValueId;
   protected String editorSourceExtraValueId;
+  protected byte [] bytes;
 
   public Object getPersistentState() {
     Map<String, Object> persistentState = new HashMap<String, Object>();
@@ -56,6 +57,7 @@ public class ModelEntity implements Serializable, Model, HasRevision, Persistent
     persistentState.put("deploymentId", deploymentId);
     persistentState.put("editorSourceValueId", this.editorSourceValueId);
     persistentState.put("editorSourceExtraValueId", this.editorSourceExtraValueId);
+    persistentState.put("bytes", this.bytes);
     return persistentState;
   }
 
@@ -159,6 +161,14 @@ public class ModelEntity implements Serializable, Model, HasRevision, Persistent
   
   public void setRevision(int revision) {
     this.revision = revision;
+  }
+
+  public byte[] getBytes() {
+    return bytes;
+  }
+
+  public void setBytes(byte[] bytes) {
+    this.bytes = bytes;
   }
   
 }

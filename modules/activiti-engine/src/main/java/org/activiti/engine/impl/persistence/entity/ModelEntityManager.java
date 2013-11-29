@@ -36,6 +36,16 @@ public class ModelEntityManager extends AbstractManager {
   public Model createNewModel() {
     return new ModelEntity();
   }
+  
+  public void insertAMGModel(Model model) {
+      getDbSqlSession().insert((PersistentObject) model);
+    }
+
+    public void updateAMGModel(ModelEntity updatedModel) {
+      CommandContext commandContext = Context.getCommandContext();
+      DbSqlSession dbSqlSession = commandContext.getDbSqlSession();
+      dbSqlSession.update(updatedModel);
+    }
 
   public void insertModel(Model model) {
     ((ModelEntity) model).setCreateTime(ClockUtil.getCurrentTime());
@@ -112,6 +122,10 @@ public class ModelEntityManager extends AbstractManager {
 
   public ModelEntity findModelById(String modelId) {
     return (ModelEntity) getDbSqlSession().selectOne("selectModel", modelId);
+  }
+  
+  public ModelEntity findAMGModelById(String modelId) {
+      return (ModelEntity) getDbSqlSession().selectOne("selectAMGModel", modelId);
   }
   
   public byte[] findEditorSourceByModelId(String modelId) {

@@ -28,6 +28,7 @@ import org.activiti.engine.impl.cmd.DeleteDeploymentCmd;
 import org.activiti.engine.impl.cmd.DeleteIdentityLinkForProcessDefinitionCmd;
 import org.activiti.engine.impl.cmd.DeleteModelCmd;
 import org.activiti.engine.impl.cmd.DeployCmd;
+import org.activiti.engine.impl.cmd.GetAMGModelCmd;
 import org.activiti.engine.impl.cmd.GetBpmnModelCmd;
 import org.activiti.engine.impl.cmd.GetDeploymentProcessDefinitionCmd;
 import org.activiti.engine.impl.cmd.GetDeploymentProcessDiagramCmd;
@@ -39,6 +40,7 @@ import org.activiti.engine.impl.cmd.GetIdentityLinksForProcessDefinitionCmd;
 import org.activiti.engine.impl.cmd.GetModelCmd;
 import org.activiti.engine.impl.cmd.GetModelEditorSourceCmd;
 import org.activiti.engine.impl.cmd.GetModelEditorSourceExtraCmd;
+import org.activiti.engine.impl.cmd.SaveAMGModelCmd;
 import org.activiti.engine.impl.cmd.SaveModelCmd;
 import org.activiti.engine.impl.cmd.SetDeploymentCategoryCmd;
 import org.activiti.engine.impl.cmd.SetProcessDefinitionCategoryCmd;
@@ -211,6 +213,10 @@ public class RepositoryServiceImpl extends ServiceImpl implements RepositoryServ
     return commandExecutor.execute(new GetModelCmd(modelId));
   }
   
+  public Model getAMGModel(String modelId) {
+      return commandExecutor.execute(new GetAMGModelCmd(modelId));
+  }
+  
   public byte[] getModelEditorSource(String modelId) {
     return commandExecutor.execute(new GetModelEditorSourceCmd(modelId));
   }
@@ -238,5 +244,10 @@ public class RepositoryServiceImpl extends ServiceImpl implements RepositoryServ
   public List<IdentityLink> getIdentityLinksForProcessDefinition(String processDefinitionId) {
     return commandExecutor.execute(new GetIdentityLinksForProcessDefinitionCmd(processDefinitionId));
   }
+
+ public void saveAMGModel(Model model) {
+     commandExecutor.execute(new SaveAMGModelCmd((ModelEntity) model));
+ }
+
 
 }

@@ -39,8 +39,10 @@ public class ModelEditorJsonRestResource extends ServerResource implements Model
     String modelId = (String) getRequest().getAttributes().get("modelId");
     
     RepositoryService repositoryService = ProcessEngines.getDefaultProcessEngine().getRepositoryService();
-    Model model = repositoryService.getModel(modelId);
+    
+    Model model = repositoryService.getAMGModel(modelId);
       
+
     if (model != null) {
       try {
         if (StringUtils.isNotEmpty(model.getMetaInfo())) {
@@ -50,7 +52,7 @@ public class ModelEditorJsonRestResource extends ServerResource implements Model
           modelNode.put(MODEL_NAME, model.getName());
         }
         modelNode.put(MODEL_ID, model.getId());
-        ObjectNode editorJsonNode = (ObjectNode) objectMapper.readTree(new String(repositoryService.getModelEditorSource(model.getId()), "utf-8"));
+        ObjectNode editorJsonNode = (ObjectNode) objectMapper.readTree(new String(model.getBytes()));
         modelNode.put("model", editorJsonNode);
         
       } catch(Exception e) {

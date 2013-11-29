@@ -178,13 +178,25 @@ public class DbSqlSessionFactory implements SessionFactory {
   public String getInsertStatement(PersistentObject object) {
     return getStatement(object.getClass(), insertStatements, "insert");
   }
+  
+  public String getAMGInsertStatement(PersistentObject object) {
+      return getStatement(object.getClass(), insertStatements, "insertAMG");
+  }
 
   public String getUpdateStatement(PersistentObject object) {
     return getStatement(object.getClass(), updateStatements, "update");
   }
+  
+  public String getAMGUpdateStatement(PersistentObject object) {
+      return getStatement(object.getClass(), updateStatements, "updateAMG");
+  }
 
   public String getDeleteStatement(Class<?> persistentObjectClass) {
     return getStatement(persistentObjectClass, deleteStatements, "delete");
+  }
+  
+  public String getAMGDeleteStatement(Class<?> persistentObjectClass) {
+      return getStatement(persistentObjectClass, deleteStatements, "deleteAMG");
   }
 
   public String getSelectStatement(Class<?> persistentObjectClass) {

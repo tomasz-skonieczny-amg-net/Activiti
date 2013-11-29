@@ -546,10 +546,15 @@ public class DbSqlSession implements Session {
     }
     insertedObjects.clear();
   }
-
+  
   protected void flushUpdates(List<PersistentObject> updatedObjects) {
     for (PersistentObject updatedObject: updatedObjects) {
       String updateStatement = dbSqlSessionFactory.getUpdateStatement(updatedObject);
+      
+      if ("updateModel".equals(updateStatement)) {
+          updateStatement = "updateAMGModel";
+      }
+      
       updateStatement = dbSqlSessionFactory.mapStatement(updateStatement);
       
       if (updateStatement==null) {

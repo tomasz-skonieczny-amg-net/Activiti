@@ -53,7 +53,7 @@ public class ModelSaveRestResource extends ServerResource implements ModelDataJs
       System.out.println("bpmn " + new String(bpmnBytes));*/
       
       RepositoryService repositoryService = ProcessEngines.getDefaultProcessEngine().getRepositoryService();
-      Model model = repositoryService.getModel(modelId);
+      Model model = repositoryService.getAMGModel(modelId);
       
       ObjectNode modelJson = (ObjectNode) objectMapper.readTree(model.getMetaInfo());
       
@@ -61,25 +61,10 @@ public class ModelSaveRestResource extends ServerResource implements ModelDataJs
       modelJson.put(MODEL_DESCRIPTION, modelForm.getFirstValue("description"));
       model.setMetaInfo(modelJson.toString());
       model.setName(modelForm.getFirstValue("name"));
+      model.setBytes(modelForm.getFirstValue("json_xml").getBytes("utf-8"));
       
-      repositoryService.saveModel(model);
-      
-      repositoryService.addModelEditorSource(model.getId(), modelForm.getFirstValue("json_xml").getBytes("utf-8"));
-      
-      InputStream svgStream = new ByteArrayInputStream(modelForm.getFirstValue("svg_xml").getBytes("utf-8"));
-      TranscoderInput input = new TranscoderInput(svgStream);
-      
-      PNGTranscoder transcoder = new PNGTranscoder();
-      // Setup output
-      ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-      TranscoderOutput output = new TranscoderOutput(outStream);
-      
-      // Do the transformation
-      transcoder.transcode(input, output);
-      final byte[] result = outStream.toByteArray();
-      repositoryService.addModelEditorSourceExtra(model.getId(), result);
-      outStream.close();
-      
+      repositoryService.saveAMGModel(model);
+           
     } catch(Exception e) {
       LOGGER.error("Error saving model", e);
       setStatus(Status.SERVER_ERROR_INTERNAL);

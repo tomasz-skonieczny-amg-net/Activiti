@@ -275,6 +275,14 @@ public interface RepositoryService {
    * @param model model to save, cannot be null.
    */
   public void saveModel(Model model);
+  
+  /**
+   * Saves the model. If the model already existed, the model is updated
+   * otherwise a new model is created.
+   * @param model model to save, cannot be null.
+   */
+  public void saveAMGModel(Model model);
+
 
   /**
    * @param modelId id of model to delete, cannot be null. When an id is passed
@@ -309,6 +317,12 @@ public interface RepositoryService {
    * @param modelId id of model
    */
   public Model getModel(String modelId);
+  
+  /**
+   * Returns the {@link Model}
+   * @param modelId id of model
+   */
+  public Model getAMGModel(String modelId);
   
   /**
    * Returns the model editor source as a byte array

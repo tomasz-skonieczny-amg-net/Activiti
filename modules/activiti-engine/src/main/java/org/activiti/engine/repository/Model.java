@@ -49,5 +49,7 @@ public interface Model {
   
   String getDeploymentId();
   void setDeploymentId(String deploymentId);
+  byte [] getBytes();
+  void setBytes(byte [] bytes);
   
 }
