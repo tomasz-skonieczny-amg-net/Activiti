@@ -14,10 +14,17 @@ package org.activiti.engine.impl;
 
 import java.util.Map;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.naming.Reference;
+import javax.naming.StringRefAddr;
+
 import org.activiti.engine.FormService;
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.ManagementService;
+import org.activiti.engine.NonSerializableFactory;
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;
 import org.activiti.engine.RepositoryService;
@@ -85,7 +92,38 @@ public class ProcessEngineImpl implements ProcessEngine {
     
     if (processEngineConfiguration.getProcessEngineLifecycleListener() != null) {
       processEngineConfiguration.getProcessEngineLifecycleListener().onProcessEngineBuilt(this);
-    }
+    } 
+    
+        // The non-Serializable object to bind
+        Object nonserializable = this;
+        // An arbitrary key to use in the StringRefAddr. The best key is the jndi
+        // name that the object will be bound under.
+        String key = "dupa";
+        // This places nonserializable into the NonSerializableFactory hashmap under key
+        NonSerializableFactory.rebind(key, nonserializable);
+     
+        Context ctx = null;
+        try {
+            ctx = new InitialContext();
+            // Bind a reference to nonserializable using NonSerializableFactory as the ObjectFactory
+            String className = nonserializable.getClass().getName();
+            String factory = NonSerializableFactory.class.getName();
+            StringRefAddr addr = new StringRefAddr("nns", key);
+            Reference memoryRef = new Reference(className, addr, factory, null);
+            ctx.rebind(key, memoryRef);
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
+    
+    
+    
+//    Context ctx = null;
+//    try {
+//        ctx = new InitialContext();
+//        ctx.bind("dupa", this);
+//    } catch (NamingException e) {
+//        e.printStackTrace();
+//    }
   }
   
   public void close() {
