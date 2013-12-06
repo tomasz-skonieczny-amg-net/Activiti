@@ -14,6 +14,8 @@ package org.activiti.engine.repository;
 
 import java.util.Date;
 
+import amg.bpm.webflow.model.DataModel;
+
 /**
  * Represents a model that is stored in the model repository. 
  * In addition, a model can be deployed to the Activiti Engine in a separate deployment step.

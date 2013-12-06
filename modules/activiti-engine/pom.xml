@@ -34,7 +34,12 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-beans</artifactId>
     </dependency>
-    
+        <dependency>
+    	<groupId>telco.accelerator.bpm.flow</groupId>
+    	<artifactId>BPMWebFlow-api</artifactId>
+    	<version>1.0</version>
+    	<scope>provided</scope>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

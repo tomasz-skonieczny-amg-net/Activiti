@@ -404,6 +404,33 @@ ORYX.Editor = {
 						
 	},
 	
+	getBCCProjectName: function(){
+		var ret = "TEST PROJECT";
+		Ext.Ajax.request({
+			url: '/rest/service/ProjectName',
+			method: 'GET',
+			success: this.onProjectNameResponse.bind(this),
+			failure: function(){
+				Ext.Msg.alert('Error reading project info url.');
+			}
+		});
+		return ret;
+	},
+
+	onProjectNameResponse: function(response){
+		try {
+			var responseJson = Ext.decode(response.responseText);
+			var prjName = responseJson["projectName"]
+			this.appendToHtml(prjName);
+		} catch(e) {
+			Ext.Msg.alert('Error resolving current project name:\n' + e);
+		}
+	},
+
+	appendToHtml: function(text){
+		Ext.DomHelper.append("_dupa12", text);
+	},
+	
 	_generateHeader: function(){
 		
 		var headerPanel = new Ext.Panel({
@@ -436,7 +463,11 @@ ORYX.Editor = {
                 "<div id='header_logo_image'>" +                
                     "<img src='../explorer/src/img/signavio/smoky/logo2.png' border=\"0\" usemap=\"#kisbpmmap\"/>" + 
                     "<map id=\"kisbpmmap\" name=\"kisbpmmap\"><area shape=\"rect\" alt=\"kisbpm.com\" title=\"kisbpm.com\" coords=\"15,2,322,44\" href=\"http://kisbpm.com\" target=\"_blank\" /></map>" +
-                "</div>" +
+
+                "</div>" + 
+		"<div id='header_project_name' style='text-align:center; font-size:200%; color:white;'>" +   
+		"<span class='dupadupa' id='_dupa12'></span>" +    
+		"</div>" + 
                 "<span class='openid " + (publicText == user ? "not" : "") + "'>" + 
                   (unescape(user)) + 
                   maModelAuthI + 
@@ -447,17 +478,22 @@ ORYX.Editor = {
                   "</a>" +
                 "</div>" + 
               "</div>";
-			
+
 			if( headerPanel.body ){
 				headerPanel.body.dom.innerHTML = content;
 			} else {
 				headerPanel.html = content
 			}
+
+			
+
 		};	
 		
 		ORYX.Editor.Cookie.onChange(fn);
 		fn(ORYX.Editor.Cookie.getParams());
 		
+			this.getBCCProjectName();
+
 		// The oryx header
 		this.addToRegion("north", headerPanel );
 	},

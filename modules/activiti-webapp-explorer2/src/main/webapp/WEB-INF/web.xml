@@ -7,32 +7,43 @@
     <distributable />
     
     
+    <context-param>
+        <param-name>atg.session.parentContextName</param-name>
+        <param-value>/dyn</param-value>
+    </context-param>
+    <context-param>
+        <param-name>atg.dafear.bootstrapContextName</param-name>
+        <param-value>/dyn</param-value>
+    </context-param>
+    <context-param>
+        <param-name>context-root</param-name>
+        <param-value>/BPM-explorer</param-value>
+    </context-param>
+    <filter>
+        <filter-name>PageFilter</filter-name>
+        <filter-class>atg.filter.dspjsp.PageFilter</filter-class>
+    </filter>
 	<context-param>
 		<description>Vaadin production mode</description>
 		<param-name>productionMode</param-name>
 		<param-value>true</param-value>
 	</context-param>
-
 	<!-- To load the Spring context -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
-	<!-- To allow session-scoped beans in Spring -->
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
-
+	<!-- To allow session-scoped beans in Spring -->
 	<filter>
 		<filter-name>UIFilter</filter-name>
 		<filter-class>org.activiti.explorer.filter.ExplorerFilter</filter-class>
 	</filter>
-
 	<filter-mapping>
 		<filter-name>UIFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
 	<servlet>
 		<servlet-name>Vaadin Application Servlet</servlet-name>
 		<servlet-class>org.activiti.explorer.servlet.ExplorerApplicationServlet</servlet-class>
@@ -41,7 +52,6 @@
 			<param-value>org.activiti.explorer.CustomWidgetset</param-value>
 		</init-param>
 	</servlet>
-
 	<!-- Restlet adapter, used to expose modeler functionality through REST -->
 	<servlet>
 		<servlet-name>RestletServlet</servlet-name>
@@ -52,7 +62,6 @@
 			<param-value>org.activiti.rest.explorer.application.ExplorerRestApplication</param-value>
 		</init-param>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>Vaadin Application Servlet</servlet-name>
 		<url-pattern>/ui/*</url-pattern>
@@ -68,12 +77,19 @@
 		<servlet-name>RestletServlet</servlet-name>
 		<url-pattern>/service/*</url-pattern>
 	</servlet-mapping>
-
+    <servlet>
+        <servlet-name>SessionNameContextServlet</servlet-name>
+        <servlet-class>atg.nucleus.servlet.SessionNameContextServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NucleusServlet</servlet-name>
+        <servlet-class>atg.nucleus.servlet.NucleusServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 	<!-- Session timeout on one day -->
 	<session-config>
 		<session-timeout>480</session-timeout>
 	</session-config>
-  
 
 
 </web-app>

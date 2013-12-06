@@ -12,6 +12,10 @@
  */
 package org.activiti.rest.editor.model;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 import org.activiti.editor.constants.ModelDataJsonConstants;
 import org.activiti.engine.ProcessEngines;
 import org.activiti.engine.RepositoryService;
@@ -24,6 +28,9 @@ import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import amg.bpm.webflow.WebFlowDataManagerInterface;
+import amg.bpm.webflow.model.DataModel;
 
 /**
  * @author Tijs Rademakers
@@ -40,7 +47,15 @@ public class ModelEditorJsonRestResource extends ServerResource implements Model
     
     RepositoryService repositoryService = ProcessEngines.getDefaultProcessEngine().getRepositoryService();
     
-    Model model = repositoryService.getAMGModel(modelId);
+    Context ctx = null;
+    DataModel model = null;
+    try {
+        ctx = new InitialContext();
+        WebFlowDataManagerInterface webFlowDataManager = (WebFlowDataManagerInterface) ctx.lookup("dynamo:/amg/bpm/flow/manager/WebFlowDataManager");
+        model = webFlowDataManager.loadWebFlowData(modelId);
+    } catch (NamingException e1) {
+        e1.printStackTrace();
+    }
       
 
     if (model != null) {

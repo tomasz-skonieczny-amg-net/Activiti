@@ -22,12 +22,14 @@ import org.activiti.engine.impl.db.HasRevision;
 import org.activiti.engine.impl.db.PersistentObject;
 import org.activiti.engine.repository.Model;
 
+import amg.bpm.webflow.model.DataModel;
+
 
 /**
  * @author Tijs Rademakers
  * @author Joram Barrez
  */
-public class ModelEntity implements Serializable, Model, HasRevision, PersistentObject {
+public class ModelEntity implements Serializable, Model, HasRevision, PersistentObject, DataModel {
 
   private static final long serialVersionUID = 1L;
   

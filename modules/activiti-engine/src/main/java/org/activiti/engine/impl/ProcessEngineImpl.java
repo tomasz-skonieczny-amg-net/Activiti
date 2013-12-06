@@ -102,7 +102,7 @@ public class ProcessEngineImpl implements ProcessEngine {
         // This places nonserializable into the NonSerializableFactory hashmap under key
         NonSerializableFactory.rebind(key, nonserializable);
      
-        Context ctx = null;
+        Context ctx = null;;
         try {
             ctx = new InitialContext();
             // Bind a reference to nonserializable using NonSerializableFactory as the ObjectFactory

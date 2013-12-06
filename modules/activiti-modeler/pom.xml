@@ -96,6 +96,25 @@
   </build>
 
   <dependencies>
+      <dependency>
+      <groupId>atg.das</groupId>
+      <artifactId>classes</artifactId>
+      <version>10.2.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>atg.dps</groupId>
+      <artifactId>classes</artifactId>
+      <version>10.2.1</version>
+      <scope>provided</scope>
+    </dependency>
+    
+    <dependency>
+    	<groupId>telco.accelerator.bpm.flow</groupId>
+    	<artifactId>BPMWebFlow-api</artifactId>
+    	<version>1.0</version>
+    	<scope>provided</scope>
+    </dependency>
     <!-- Activiti -->
     <dependency>
       <groupId>org.activiti</groupId>
@@ -216,7 +235,12 @@
 	    <groupId>junit</groupId>
 	    <artifactId>junit</artifactId>
 	  </dependency>
-   
+
+	  <dependency>
+	  	<groupId>telco.accelerator.bpm.flow</groupId>
+	  	<artifactId>BPMWebFlowBCC-jar</artifactId>
+	  	<version>1.0</version>
+	  </dependency>
   </dependencies>
   
   <profiles>

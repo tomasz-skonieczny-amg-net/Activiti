@@ -41,7 +41,7 @@
     <!-- MODEL INSERT -->
   
   <insert id="insertAMGModel" parameterType="org.activiti.engine.impl.persistence.entity.ModelEntity">
-    insert into BPM_WEB_FLOW_DATA(ID, NAME, CONTENT, META_INFO)
+    insert into ATG_TA_PUBLISHING.BPM_WEB_FLOW_DATA(ID, NAME, CONTENT, META_INFO)
     values(#{id, jdbcType=INTEGER}, 
            #{name, jdbcType=VARCHAR}, 
            #{bytes, jdbcType=BINARY}, 
@@ -50,7 +50,7 @@
   
   <!-- MODEL UPDATE -->
   <update id="updateAMGModel" parameterType="org.activiti.engine.impl.persistence.entity.ModelEntity">
-    update BPM_WEB_FLOW_DATA set
+    update ATG_TA_PUBLISHING.BPM_WEB_FLOW_DATA set
       NAME = #{name, jdbcType=VARCHAR}, 
       CONTENT = #{bytes, jdbcType=BINARY}, 
       META_INFO = #{metaInfo, jdbcType=VARCHAR}
@@ -150,7 +150,7 @@
   </select>
   
   <select id="selectAMGModel" parameterType="string" resultMap="AMGModelResultMap">
-    select * from BPM_WEB_FLOW_DATA where ID = #{id}
+    select * from ATG_TA_SWITCHING_A.BPM_WEB_FLOW_DATA where ID = #{id}
   </select>
   
   <!-- mysql specific -->
