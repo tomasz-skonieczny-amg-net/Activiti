@@ -96,18 +96,6 @@
   </build>
 
   <dependencies>
-      <dependency>
-      <groupId>atg.das</groupId>
-      <artifactId>classes</artifactId>
-      <version>10.2.1</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>atg.dps</groupId>
-      <artifactId>classes</artifactId>
-      <version>10.2.1</version>
-      <scope>provided</scope>
-    </dependency>
     
     <dependency>
     	<groupId>telco.accelerator.bpm.flow</groupId>

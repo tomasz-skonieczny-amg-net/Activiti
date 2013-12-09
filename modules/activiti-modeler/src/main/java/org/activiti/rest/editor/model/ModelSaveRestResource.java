@@ -29,9 +29,7 @@ import org.restlet.resource.ServerResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import amg.bpm.flow.manager.WebFlowDataManager;
 import amg.bpm.webflow.WebFlowDataManagerInterface;
-import atg.nucleus.Nucleus;
 
 
 /**
