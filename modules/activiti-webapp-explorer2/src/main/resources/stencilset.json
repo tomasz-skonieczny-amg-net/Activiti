@@ -299,7 +299,8 @@
         "name" : "CSS class",
         "name_de" : "CSS class",
         "type" : "String",
-        "value" : "Yes",
+        "value" : "",
+        "optional" : true,
         "width" : 100
       }, {
 
@@ -307,7 +308,16 @@
         "name" : "Radio button group",
         "name_de" : "Radio button group",
         "type" : "String",
-        "value" : "Yes",
+        "value" : "",
+        "optional" : true,
+        "width" : 150
+      }, {
+
+        "id" : "formproperty_provider",
+        "name" : "Data Provider",
+        "name_de" : "Data Provider",
+        "type" : "String",
+        "value" : "",
         "optional" : true,
         "width" : 150
       }, {

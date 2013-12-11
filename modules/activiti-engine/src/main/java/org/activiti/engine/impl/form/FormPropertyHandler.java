@@ -39,6 +39,7 @@ public class FormPropertyHandler {
   protected Expression defaultExpression;
   protected String cssClass;
   protected String radioButtonGroup;
+  protected String dataProvider;
   
   public FormProperty createFormProperty(ExecutionEntity execution) {
     FormPropertyImpl formProperty = new FormPropertyImpl(this);
@@ -202,5 +203,13 @@ public String getRadioButtonGroup() {
 
 public void setRadioButtonGroup(String radioButtonGroup) {
     this.radioButtonGroup = radioButtonGroup;
+}
+
+public String getDataProvider() {
+    return dataProvider;
+}
+
+public void setDataProvider(String dataProvider) {
+    this.dataProvider = dataProvider;
 }
 }

@@ -308,6 +308,8 @@ public abstract class BaseBpmnXMLConverter implements BpmnXMLConstants {
           if (property.isRequired()) {
             writeDefaultAttribute(ATTRIBUTE_FORM_REQUIRED, ATTRIBUTE_VALUE_TRUE, xtw);
           }
+          writeDefaultAttribute(ATTRIBUTE_FORM_DATAPROVIDER, property.getDataProvider(), xtw);
+          
           writeDefaultAttribute(ATTRIBUTE_FORM_CSSCLASS, property.getCssClass(), xtw);
           
           writeDefaultAttribute(ATTRIBUTE_FORM_RADIOGROUP, property.getRadioButtonGroup(), xtw);

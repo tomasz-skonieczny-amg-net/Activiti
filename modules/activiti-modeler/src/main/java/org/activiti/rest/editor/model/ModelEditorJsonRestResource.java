@@ -46,8 +46,8 @@ public class ModelEditorJsonRestResource extends ServerResource implements Model
     ObjectNode modelNode = null;
     String modelId = (String) getRequest().getAttributes().get("modelId");
     
-    RepositoryService repositoryService = ProcessEngines.getDefaultProcessEngine().getRepositoryService();
-    
+//    RepositoryService repositoryService = ProcessEngines.getDefaultProcessEngine().getRepositoryService();
+//    Model model = repositoryService.getAMGModel(modelId);
     Context ctx = null;
     DataModel model = null;
     try {

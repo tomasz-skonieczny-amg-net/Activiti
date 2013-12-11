@@ -30,6 +30,7 @@ public class FormPropertyImpl implements FormProperty {
   protected boolean isReadable;
   protected boolean isWritable;
   protected String cssClass;
+  protected String dataProvider;
   protected String radioButtonGroup;
 
   protected String value;
@@ -42,6 +43,7 @@ public class FormPropertyImpl implements FormProperty {
     this.isReadable = formPropertyHandler.isReadable();
     this.isWritable = formPropertyHandler.isWritable();
     this.cssClass = formPropertyHandler.getCssClass();
+    this.dataProvider = formPropertyHandler.getDataProvider();
     this.radioButtonGroup = formPropertyHandler.getRadioButtonGroup();
   }
 
@@ -91,5 +93,13 @@ public String getRadioButtonGroup() {
 
 public void setRadioButtonGroup(String radioButtonGroup) {
     this.radioButtonGroup = radioButtonGroup;
+}
+
+public String getDataProvider() {
+    return dataProvider;
+}
+
+public void setDataProvider(String dataProvider) {
+    this.dataProvider = dataProvider;
 }
 }

@@ -30,6 +30,7 @@ public class FormProperty extends BaseElement {
   protected boolean writeable = true;
   protected boolean required;
   protected String cssClass;
+  protected String dataProvider;
   protected String radioButtonGroup;
   protected List<FormValue> formValues = new ArrayList<FormValue>();
 
@@ -104,5 +105,11 @@ public String getRadioButtonGroup() {
 }
 public void setRadioButtonGroup(String radioButtonGroup) {
     this.radioButtonGroup = radioButtonGroup;
+}
+public String getDataProvider() {
+    return dataProvider;
+}
+public void setDataProvider(String dataProvider) {
+    this.dataProvider = dataProvider;
 }
 }

@@ -59,6 +59,10 @@ public class FormPropertyParser extends BaseChildElementParser {
         property.setCssClass(xtr.getAttributeValue(null, ATTRIBUTE_FORM_CSSCLASS));
     }
     
+    if (StringUtils.isNotEmpty(xtr.getAttributeValue(null, ATTRIBUTE_FORM_DATAPROVIDER))) {
+        property.setDataProvider(xtr.getAttributeValue(null, ATTRIBUTE_FORM_DATAPROVIDER));
+    }
+    
     if (StringUtils.isNotEmpty(xtr.getAttributeValue(null, ATTRIBUTE_FORM_RADIOGROUP))) {
         property.setRadioButtonGroup(xtr.getAttributeValue(null, ATTRIBUTE_FORM_RADIOGROUP));
     }

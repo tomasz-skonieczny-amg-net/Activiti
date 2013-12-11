@@ -60,6 +60,7 @@ public class DefaultFormHandler implements FormHandler {
       formPropertyHandler.setName(formProperty.getName());
       
       formPropertyHandler.setCssClass(formProperty.getCssClass());
+      formPropertyHandler.setDataProvider(formProperty.getDataProvider());
       formPropertyHandler.setRadioButtonGroup(formProperty.getRadioButtonGroup());
       
       AbstractFormType type = formTypes.parseFormPropertyType(formProperty);

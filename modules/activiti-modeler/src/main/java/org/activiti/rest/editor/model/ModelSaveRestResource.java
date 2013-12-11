@@ -30,6 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import amg.bpm.webflow.WebFlowDataManagerInterface;
+import amg.bpm.webflow.model.DataModel;
 
 
 /**
@@ -50,23 +51,27 @@ public class ModelSaveRestResource extends ServerResource implements ModelDataJs
     
     try {
 
-        RepositoryService repositoryService = ProcessEngines.getDefaultProcessEngine().getRepositoryService();
-        Model model = repositoryService.getAMGModel(modelId);
-      
-        ObjectNode modelJson = (ObjectNode) objectMapper.readTree(model.getMetaInfo());
+//        RepositoryService repositoryService = ProcessEngines.getDefaultProcessEngine().getRepositoryService();
+//        Model model = repositoryService.getAMGModel(modelId);
         
-        modelJson.put(MODEL_NAME, modelForm.getFirstValue("name"));
-        modelJson.put(MODEL_DESCRIPTION, modelForm.getFirstValue("description"));
-        model.setMetaInfo(modelJson.toString());
-        model.setName(modelForm.getFirstValue("name"));
-        model.setBytes(modelForm.getFirstValue("json_xml").getBytes("utf-8"));
+      
         
         //webFlowDataManager.saveWebFlowDiagram(modelId, modelForm.getFirstValue("name"), modelForm.getFirstValue("json_xml").getBytes("utf-8"), modelJson.toString());
         
           Context ctx = null;
           try {
               ctx = new InitialContext();
+              
               WebFlowDataManagerInterface webFlowDataManager = (WebFlowDataManagerInterface) ctx.lookup("dynamo:/amg/bpm/flow/manager/WebFlowDataManager");
+              DataModel model = webFlowDataManager.loadWebFlowData(modelId);
+              
+              ObjectNode modelJson = (ObjectNode) objectMapper.readTree(model.getMetaInfo());
+              
+              modelJson.put(MODEL_NAME, modelForm.getFirstValue("name"));
+              modelJson.put(MODEL_DESCRIPTION, modelForm.getFirstValue("description"));
+              model.setMetaInfo(modelJson.toString());
+              model.setName(modelForm.getFirstValue("name"));
+              model.setBytes(modelForm.getFirstValue("json_xml").getBytes("utf-8"));
               
               webFlowDataManager.saveWebFlowDiagram(modelId, modelForm.getFirstValue("name"), modelForm.getFirstValue("json_xml").getBytes("utf-8"), modelJson.toString());
           } catch (NamingException e) {
