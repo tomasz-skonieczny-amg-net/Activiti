@@ -61,7 +61,7 @@ public class EnumFormType extends AbstractFormType {
   
   protected void validateValue(String value) {
     if(value != null) {
-      if(values != null && !values.containsKey(value)) {
+      if(values != null && !values.containsKey(value) && !values.containsValue(value)) {
         throw new ActivitiIllegalArgumentException("Invalid value for enum form property: " + value);
       }
     }
