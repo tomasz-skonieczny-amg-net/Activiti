@@ -343,6 +343,53 @@
           "width" : 200,
           "optional" : false
         } ]
+        
+        }, {
+      
+        "id" : "formproperty_formvalues",
+        "name" : "Form values",
+        "name_de" : "Typ",
+        "type" : "Complex",
+        "width" : 300,
+        "optional" : false,
+        "complexItems" : [ {
+        "id" : "formproperty_formvalue_type",
+        "name" : "Type",
+        "name_de" : "Typ",
+        "type" : "Choice",
+        "value" : "",
+        "width" : 100,
+        "optional" : false,
+        "items" : [ {
+          "id" : "c1",
+          "title" : "Data",
+          "title_de" : "Data",
+          "value" : "data",
+          "refToView" : ""
+        }, {
+          "id" : "c2",
+          "title" : "Validator",
+          "title_de" : "Validator",
+          "value" : "validator",
+          "refToView" : ""
+        } ]
+      }, {
+          "id" : "formproperty_formvalue_id",
+          "name" : "Id",
+          "type" : "String",
+          "value" : "",
+          "width" : 100,
+          "optional" : false
+        }, {
+          "id" : "formproperty_formvalue_name",
+          "name" : "Name",
+          "type" : "String",
+          "value" : "",
+          "width" : 200,
+          "optional" : false
+        } ]
+        
+        
       } ]
     } ]
   }, {
