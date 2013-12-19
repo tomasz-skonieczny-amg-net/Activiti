@@ -1,5 +1,6 @@
 package org.activiti.engine.impl.form;
 
+import java.util.List;
 import java.util.Map;
 
 import org.activiti.engine.ActivitiIllegalArgumentException;
@@ -9,9 +10,11 @@ public class ListFormType extends AbstractFormType {
     
 
     protected Map<String, String> values;
-
-    public ListFormType(Map<String, String> values) {
+    protected List<String> validators;
+    
+    public ListFormType(Map<String, String> values, List<String> validators) {
       this.values = values;
+      this.validators = validators;
     }
 
     public String getName() {
@@ -54,6 +57,9 @@ public class ListFormType extends AbstractFormType {
   public Map<String, String> getValues() {
       return values;
   }
-
+//
+//  public List<String> getValidators() {
+//    return validators;
+//  }
 
 }

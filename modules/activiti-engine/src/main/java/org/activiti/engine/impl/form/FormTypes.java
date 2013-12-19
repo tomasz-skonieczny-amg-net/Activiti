@@ -13,8 +13,10 @@
 
 package org.activiti.engine.impl.form;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.activiti.bpmn.model.FormProperty;
@@ -44,19 +46,48 @@ public class FormTypes {
     } else if ("enum".equals(formProperty.getType())) {
       // ACT-1023: Using linked hashmap to preserve the order in which the entries are defined
       Map<String, String> values = new LinkedHashMap<String, String>();
+      List<String> validators = new ArrayList<String>();
       for (FormValue formValue: formProperty.getFormValues()) {
-        values.put(formValue.getId(), formValue.getName());
+        if ("validator".equals(formValue.getType())) {
+            validators.add(formValue.getName());
+        } else {
+            values.put(formValue.getId(), formValue.getName());
+        }
       }
       
-      formType = new EnumFormType(values);
+      formType = new EnumFormType(values, validators);
     } else if ("list".equals(formProperty.getType())) {
         
         Map<String, String> values = new LinkedHashMap<String, String>();
+        List<String> validators = new ArrayList<String>();
         for (FormValue formValue: formProperty.getFormValues()) {
-          values.put(formValue.getId(), formValue.getName());
+          if ("validator".equals(formValue.getType())) {
+              validators.add(formValue.getName());
+          } else {
+              values.put(formValue.getId(), formValue.getName());
+          }
         }
+        formType = new ListFormType(values, validators);
         
-        formType = new ListFormType(values);
+    }  else if ("long".equals(formProperty.getType())) {
+        
+        List<String> validators = new ArrayList<String>();
+        for (FormValue formValue: formProperty.getFormValues()) {
+            if ("validator".equals(formValue.getType())) {
+                validators.add(formValue.getName());
+            }
+        }
+        formType = new LongFormType(validators);
+        
+    } else if ("string".equals(formProperty.getType())) {
+        
+        List<String> validators = new ArrayList<String>();
+        for (FormValue formValue: formProperty.getFormValues()) {
+            if ("validator".equals(formValue.getType())) {
+                validators.add(formValue.getName());
+            }
+        }
+        formType = new StringFormType(validators);
         
     } else if (StringUtils.isNotEmpty(formProperty.getType())) {
       formType = formTypes.get(formProperty.getType());

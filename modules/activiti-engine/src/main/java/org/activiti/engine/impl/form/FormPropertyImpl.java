@@ -14,6 +14,7 @@
 
 package org.activiti.engine.impl.form;
 
+import org.activiti.engine.delegate.Expression;
 import org.activiti.engine.form.FormProperty;
 import org.activiti.engine.form.FormType;
 
@@ -32,6 +33,8 @@ public class FormPropertyImpl implements FormProperty {
   protected String cssClass;
   protected String dataProvider;
   protected String radioButtonGroup;
+  protected Expression variableExpression;
+  protected Expression defaultExpression;
 
   protected String value;
 
@@ -45,6 +48,8 @@ public class FormPropertyImpl implements FormProperty {
     this.cssClass = formPropertyHandler.getCssClass();
     this.dataProvider = formPropertyHandler.getDataProvider();
     this.radioButtonGroup = formPropertyHandler.getRadioButtonGroup();
+    this.variableExpression = formPropertyHandler.getVariableExpression();
+    this.defaultExpression = formPropertyHandler.getDefaultExpression();
   }
 
   public String getId() {
@@ -102,4 +107,21 @@ public String getDataProvider() {
 public void setDataProvider(String dataProvider) {
     this.dataProvider = dataProvider;
 }
+
+public Expression getVariableExpression() {
+    return variableExpression;
+}
+
+public void setVariableExpression(Expression variableExpression) {
+    this.variableExpression = variableExpression;
+}
+
+public Expression getDefaultExpression() {
+    return defaultExpression;
+}
+
+public void setDefaultExpression(Expression defaultExpression) {
+    this.defaultExpression = defaultExpression;
+}
+
 }

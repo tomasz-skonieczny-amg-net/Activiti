@@ -13,6 +13,7 @@
 
 package org.activiti.engine.impl.form;
 
+import java.util.List;
 import java.util.Map;
 
 import org.activiti.engine.ActivitiIllegalArgumentException;
@@ -25,9 +26,11 @@ import org.activiti.engine.form.AbstractFormType;
 public class EnumFormType extends AbstractFormType {
 
   protected Map<String, String> values;
+  protected List<String> validators;
 
-  public EnumFormType(Map<String, String> values) {
+  public EnumFormType(Map<String, String> values,  List<String> validators) {
     this.values = values;
+    this.validators = validators;
   }
 
   public String getName() {
@@ -67,8 +70,12 @@ public class EnumFormType extends AbstractFormType {
     }
   }
 
-public Map<String, String> getValues() {
-    return values;
-}
+  public Map<String, String> getValues() {
+      return values;
+  }
+//
+//  public List<String> getValidators() {
+//    return validators;
+//  }
 
 }

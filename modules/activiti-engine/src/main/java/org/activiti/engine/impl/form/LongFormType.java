@@ -13,6 +13,9 @@
 
 package org.activiti.engine.impl.form;
 
+import java.util.List;
+import java.util.Map;
+
 import org.activiti.engine.form.AbstractFormType;
 
 
@@ -21,7 +24,15 @@ import org.activiti.engine.form.AbstractFormType;
  * @author Tom Baeyens
  */
 public class LongFormType extends AbstractFormType {
+    
+  List<String> validators;  
+  
+  public LongFormType() { }
 
+  public LongFormType(List<String> validators) {
+    this.validators = validators;
+  }
+    
   public String getName() {
     return "long";
   }
@@ -43,4 +54,10 @@ public class LongFormType extends AbstractFormType {
     }
     return modelValue.toString();
   }
+
+  @Override
+  public List<String> getValidators() {
+    return validators;
+  }
+
 }

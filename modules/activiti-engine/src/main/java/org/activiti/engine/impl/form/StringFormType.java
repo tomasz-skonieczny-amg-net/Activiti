@@ -13,6 +13,9 @@
 
 package org.activiti.engine.impl.form;
 
+import java.util.List;
+import java.util.Map;
+
 import org.activiti.engine.form.AbstractFormType;
 
 
@@ -21,6 +24,14 @@ import org.activiti.engine.form.AbstractFormType;
  * @author Tom Baeyens
  */
 public class StringFormType extends AbstractFormType {
+    
+    List<String> validators;
+    
+    public StringFormType() { }
+    
+    public StringFormType(List<String> validators) {
+        this.validators = validators;
+    }
 
   public String getName() {
     return "string";
@@ -37,5 +48,12 @@ public class StringFormType extends AbstractFormType {
   public String convertModelValueToFormValue(Object modelValue) {
     return (String) modelValue;
   }
+
+  @Override
+  public List<String> getValidators() {
+    return validators;
+  }
+
+
 
 }

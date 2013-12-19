@@ -68,6 +68,7 @@ public abstract class BaseBpmnXMLConverter implements BpmnXMLConstants {
     
     String elementId = xtr.getAttributeValue(null, ATTRIBUTE_ID);
     String elementName = xtr.getAttributeValue(null, ATTRIBUTE_NAME);
+    String elementType = xtr.getAttributeValue(null, ATTRIBUTE_TYPE);
     boolean async = parseAsync(xtr);
     boolean notExclusive = parseNotExclusive(xtr);
     String defaultFlow = xtr.getAttributeValue(null, ATTRIBUTE_DEFAULT);
@@ -319,6 +320,9 @@ public abstract class BaseBpmnXMLConverter implements BpmnXMLConstants {
               xtw.writeStartElement(ACTIVITI_EXTENSIONS_PREFIX, ELEMENT_VALUE, ACTIVITI_EXTENSIONS_NAMESPACE);
               xtw.writeAttribute(ATTRIBUTE_ID, formValue.getId());
               xtw.writeAttribute(ATTRIBUTE_NAME, formValue.getName());
+              if (StringUtils.isNotBlank(formValue.getType())) {
+                  xtw.writeAttribute(ATTRIBUTE_TYPE, formValue.getType());
+              }
               xtw.writeEndElement();
             }
           }

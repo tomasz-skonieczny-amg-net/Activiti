@@ -38,6 +38,7 @@ public interface FormProperty extends Serializable {
   /** Optional value that should be used to display in this property */
   String getValue();
   
+  void setValue(String value);
   /** Is this property read to be displayed in the form and made accessible with the methods 
    * {@link FormService#getStartFormData(String)} and {@link FormService#getTaskFormData(String)}. */
   boolean isReadable();

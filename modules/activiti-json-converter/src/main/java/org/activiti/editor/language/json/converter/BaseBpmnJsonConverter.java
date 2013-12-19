@@ -256,6 +256,7 @@ public abstract class BaseBpmnJsonConverter implements EditorJsonConstants, Sten
         ObjectNode propertyFormValueNode = objectMapper.createObjectNode();
         propertyFormValueNode.put(PROPERTY_FORM_FORM_VALUE_ID, formValue.getId());
         propertyFormValueNode.put(PROPERTY_FORM_FORM_VALUE_NAME, formValue.getName());
+        propertyFormValueNode.put(PROPERTY_FORM_FORM_VALUE_TYPE, formValue.getType());
         formValueItemNode.add(propertyFormValueNode);
       }
       formValueNode.put("totalCount", formValueItemNode.size());
@@ -425,6 +426,7 @@ public abstract class BaseBpmnJsonConverter implements EditorJsonConstants, Sten
                   FormValue formValue = new FormValue();
                   formValue.setId(valueIdNode.asText());
                   formValue.setName(getValueAsString(PROPERTY_FORM_FORM_VALUE_NAME, valueNode));
+                  formValue.setType(getValueAsString(PROPERTY_FORM_FORM_VALUE_TYPE, valueNode));
                   formValues.add(formValue);
                 }
               }

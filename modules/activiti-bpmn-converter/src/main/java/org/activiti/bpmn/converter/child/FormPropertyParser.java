@@ -76,6 +76,7 @@ public class FormPropertyParser extends BaseChildElementParser {
           BpmnXMLUtil.addXMLLocation(value, xtr);
           value.setId(xtr.getAttributeValue(null, ATTRIBUTE_ID));
           value.setName(xtr.getAttributeValue(null, ATTRIBUTE_NAME));
+          value.setType(xtr.getAttributeValue(null, ATTRIBUTE_TYPE));
           property.getFormValues().add(value);
 
         } else if (xtr.isEndElement() && getElementName().equalsIgnoreCase(xtr.getLocalName())) {

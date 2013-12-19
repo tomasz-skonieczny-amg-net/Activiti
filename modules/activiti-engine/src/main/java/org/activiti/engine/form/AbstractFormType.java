@@ -13,6 +13,9 @@
 
 package org.activiti.engine.form;
 
+import java.util.Collections;
+import java.util.List;
+
 
 
 /**
@@ -29,6 +32,10 @@ public abstract class AbstractFormType implements FormType {
 
   public Object getInformation(String key) {
     return null;
+  }
+  
+  public List<String> getValidators() {
+      return Collections.EMPTY_LIST;
   }
 
 }
