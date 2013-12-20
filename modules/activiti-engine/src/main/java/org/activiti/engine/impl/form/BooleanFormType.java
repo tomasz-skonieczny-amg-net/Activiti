@@ -42,10 +42,17 @@ public class BooleanFormType extends AbstractFormType {
       return null;
     }
     
+    if (modelValue.getClass().isArray()) {
+        if(Boolean.class.isAssignableFrom(((Object [])modelValue)[0].getClass())
+                || boolean.class.isAssignableFrom(((Object [])modelValue)[0].getClass())) {
+          return ((Object [])modelValue)[0].toString();      
+        }
+    }
+    
     if(Boolean.class.isAssignableFrom(modelValue.getClass())
             || boolean.class.isAssignableFrom(modelValue.getClass())) {
       return modelValue.toString();      
     }
-    throw new ActivitiIllegalArgumentException("Model value is not of type boolean, but of type " + modelValue.getClass().getName());
+    return String.valueOf(false);
   }
 }
