@@ -239,6 +239,11 @@ public abstract class BaseBpmnJsonConverter implements EditorJsonConstants, Sten
       } else {
         propertyItemNode.putNull(PROPERTY_FORM_EXPRESSION);
       }
+      if (StringUtils.isNotEmpty(property.getExpression())) {
+          propertyItemNode.put(PROPERTY_FORM_DEFAULT, property.getDefaultExpression());
+        } else {
+          propertyItemNode.putNull(PROPERTY_FORM_DEFAULT);
+        }
       if (StringUtils.isNotEmpty(property.getVariable())) {
         propertyItemNode.put(PROPERTY_FORM_VARIABLE, property.getVariable());
       } else {
@@ -394,6 +399,7 @@ public abstract class BaseBpmnJsonConverter implements EditorJsonConstants, Sten
             formProperty.setName(getValueAsString(PROPERTY_FORM_NAME, formNode));
             formProperty.setType(getValueAsString(PROPERTY_FORM_TYPE, formNode));
             formProperty.setExpression(getValueAsString(PROPERTY_FORM_EXPRESSION, formNode));
+            formProperty.setDefaultExpression(getValueAsString("formproperty_default" ,formNode));
             formProperty.setVariable(getValueAsString(PROPERTY_FORM_VARIABLE, formNode));
             readWriteReqNode = getValueAsString(PROPERTY_FORM_REQUIRED, formNode);
             if (PROPERTY_VALUE_YES.equalsIgnoreCase(readWriteReqNode))

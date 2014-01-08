@@ -73,9 +73,9 @@ public class SerializableType extends ByteArrayType {
 	          if(! origDeserializedObject.getClass().isPrimitive() && ! String.class.equals(origDeserializedObject.getClass())) {
 	        	  System.out.println("Creating proxy for: " + origDeserializedObject);
 	        	  //Object proxy = createProxy(deserializedObject);
-	        	  Object proxy = createProxy(origDeserializedObject.getClass(), new RecurProxyMethodInterceptor(origDeserializedObject));
+	        	  //Object proxy = createProxy(origDeserializedObject.getClass(), new RecurProxyMethodInterceptor(origDeserializedObject));
 	        	  
-	        	  deserializedObject = proxy;
+	        	  //deserializedObject = proxy;
 	          }
     	  }
           
@@ -155,7 +155,7 @@ public class SerializableType extends ByteArrayType {
           final MethodInterceptor interceptor) {
       final Enhancer enhancer = new Enhancer();
       enhancer.setSuperclass(classToMock);
-      enhancer.setInterfaces(new Class[]{Serializable.class, amg.aop.IProxied.class});
+      //enhancer.setInterfaces(new Class[]{Serializable.class, amg.aop.IProxied.class});
       enhancer.setCallbackType(interceptor.getClass());
 
       final Class<?> proxyClass = enhancer.createClass();

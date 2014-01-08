@@ -157,7 +157,7 @@ public interface StencilConstants {
   final String PROPERTY_FORM_CSSCLASS = "formproperty_cssclass";
   final String PROPERTY_FORM_DATAPROVIDER = "formproperty_provider";
   final String PROPERTY_FORM_RADIOGROUP = "formproperty_radiobuttongroup";
-
+  final String PROPERTY_FORM_DEFAULT = "formproperty_default";
 	final String PROPERTY_SCRIPT_FORMAT = "scriptformat";
 	final String PROPERTY_SCRIPT_TEXT = "scripttext";
 	
