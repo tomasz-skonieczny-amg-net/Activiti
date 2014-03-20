@@ -423,7 +423,7 @@ ORYX.Editor = {
 			var prjName = responseJson["projectName"]
 			this.appendToHtml(prjName);
 		} catch(e) {
-			Ext.Msg.alert('Error resolving current project name:\n' + e);
+			//Ext.Msg.alert('Error resolving current project name:\n' + e);
 		}
 	},
 
@@ -495,7 +495,7 @@ ORYX.Editor = {
 			this.getBCCProjectName();
 
 		// The oryx header
-		this.addToRegion("north", headerPanel );
+		//this.addToRegion("north", headerPanel );
 	},
 	
 	/**
