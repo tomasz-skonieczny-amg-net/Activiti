@@ -492,7 +492,7 @@ ORYX.Editor = {
 		ORYX.Editor.Cookie.onChange(fn);
 		fn(ORYX.Editor.Cookie.getParams());
 		
-			this.getBCCProjectName();
+		//this.getBCCProjectName();
 
 		// The oryx header
 		//this.addToRegion("north", headerPanel );
