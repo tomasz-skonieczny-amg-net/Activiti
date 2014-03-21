@@ -8,16 +8,16 @@
        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd">
        
   <!-- This Spring config file is NOT used in Alfresco, as the Activiti engine is wired in a different way there -->
-       
+   
+   <!-- 
   <bean id="demoDataGenerator" class="org.activiti.explorer.demo.DemoDataGenerator" init-method="init">
     <property name="processEngine" ref="processEngine" />
-    
-    <!-- Set following properties to false if certain demo data is not wanted -->
     <property name="createDemoUsersAndGroups" value="true" />
-    <property name="createDemoProcessDefinitions" value="true" />
-    <property name="createDemoModels" value="true" />
-    <property name="generateReportData" value="true" />
+    <property name="createDemoProcessDefinitions" value="false" />
+    <property name="createDemoModels" value="false" />
+    <property name="generateReportData" value="false" />
   </bean>
+   -->
   
   <bean id="dbProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="location" value="classpath:db.properties" />
