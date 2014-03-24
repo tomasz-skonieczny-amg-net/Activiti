@@ -98,7 +98,7 @@ public class ProcessEngineImpl implements ProcessEngine {
         Object nonserializable = this;
         // An arbitrary key to use in the StringRefAddr. The best key is the jndi
         // name that the object will be bound under.
-        String key = "dupa";
+        String key = "key";
         // This places nonserializable into the NonSerializableFactory hashmap under key
         NonSerializableFactory.rebind(key, nonserializable);
      

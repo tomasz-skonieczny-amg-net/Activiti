@@ -428,7 +428,7 @@ ORYX.Editor = {
 	},
 
 	appendToHtml: function(text){
-		Ext.DomHelper.append("_dupa12", text);
+		Ext.DomHelper.append("_upa12", text);
 	},
 	
 	_generateHeader: function(){
@@ -466,7 +466,7 @@ ORYX.Editor = {
 
                 "</div>" + 
 		"<div id='header_project_name' style='text-align:center; font-size:200%; color:white;'>" +   
-		"<span class='dupadupa' id='_dupa12'></span>" +    
+		"<span class='upaupa' id='_upa12'></span>" +    
 		"</div>" + 
                 "<span class='openid " + (publicText == user ? "not" : "") + "'>" + 
                   (unescape(user)) + 
