@@ -222,6 +222,12 @@
           "title_de" : "List",
           "value" : "list",
           "refToView" : ""
+        }, {
+          "id" : "c7",
+          "title" : "Button",
+          "title_de" : "Button",
+          "value" : "button",
+          "refToView" : ""
         } ]
       }, {
         "id" : "formproperty_expression",
