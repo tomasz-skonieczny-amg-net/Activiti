@@ -36,6 +36,7 @@ public interface StencilConstants {
   
   final String STENCIL_TASK_BUSINESS_RULE = "BusinessRule";
   final String STENCIL_TASK_MAIL = "MailTask";
+  final String STENCIL_TASK_SMS = "SmsTask";
   final String STENCIL_TASK_MANUAL = "ManualTask";
   final String STENCIL_TASK_RECEIVE = "ReceiveTask";
   final String STENCIL_TASK_SCRIPT = "ScriptTask";
@@ -175,6 +176,11 @@ public interface StencilConstants {
 	final String PROPERTY_MAILTASK_TEXT= "mailtasktext";
 	final String PROPERTY_MAILTASK_HTML= "mailtaskhtml";
 	final String PROPERTY_MAILTASK_CHARSET= "mailtaskcharset";
+	
+	final String PROPERTY_SMSTASK_TO = "smstaskto";
+	final String PROPERTY_SMSTASK_FROM = "smstaskfrom";
+	final String PROPERTY_SMSTASK_TEXT= "smstasktext";
+	final String PROPERTY_SMSTASK_CHARSET= "smstaskcharset";
 	
 	final String PROPERTY_CALLACTIVITY_CALLEDELEMENT = "callactivitycalledelement";
   final String PROPERTY_CALLACTIVITY_IN = "callactivityinparameters";

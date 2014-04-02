@@ -683,6 +683,37 @@
       "popular" : true
     } ]
   }, {
+    "name" : "smstaskbase",
+    "properties" : [ {
+      "id" : "smstaskto",
+      "type" : "Text",
+      "title" : "To",
+      "value" : "",
+      "description" : "The recipients of sms. Multiple recipients are defined in a comma-separated list.",
+      "popular" : true
+    }, {
+      "id" : "smstaskfrom",
+      "type" : "Text",
+      "title" : "From",
+      "value" : "",
+      "description" : "The sender of sms message. If not provided, the default configured from address is used.",
+      "popular" : true
+    }, {
+      "id" : "smstasktext",
+      "type" : "Text",
+      "title" : "Text",
+      "value" : "",
+      "description" : "The content of the sms.",
+      "popular" : true
+    }, {
+      "id" : "smstaskcharset",
+      "type" : "String",
+      "title" : "Charset",
+      "value" : "",
+      "description" : "Allows to change the charset of the sms, which is necessary for many non-English languages. ",
+      "popular" : true
+    } ]
+  }, {
     "name" : "callactivitybase",
     "properties" : [ {
       "id" : "callactivitycalledelement",
@@ -1261,6 +1292,16 @@
     "icon" : "activity/list/type.send.png",
     "groups" : [ "Activities" ],
     "propertyPackages" : [ "elementbase", "baseattributes", "mailtaskbase", "asynchronousbase", "executionlistenersbase", "loopcharacteristics", "activity" ],
+    "roles" : [ "sequence_start", "Activity", "sequence_end", "ActivitiesMorph", "all" ]
+  }, {
+    "type" : "node",
+    "id" : "SmsTask",
+    "title" : "SMS task",
+    "description" : "A sms task",
+    "view" : "activity/sendtask.svg",
+    "icon" : "activity/list/type.sms.send.png",
+    "groups" : [ "Activities" ],
+    "propertyPackages" : [ "elementbase", "baseattributes", "smstaskbase", "asynchronousbase", "executionlistenersbase", "loopcharacteristics", "activity" ],
     "roles" : [ "sequence_start", "Activity", "sequence_end", "ActivitiesMorph", "all" ]
   }, {
     "type" : "node",

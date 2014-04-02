@@ -47,6 +47,10 @@ public class ServiceTaskParseHandler extends AbstractExternalInvocationBpmnParse
           validateFieldDeclarationsForEmail(bpmnParse, serviceTask, serviceTask.getFieldExtensions());
           activity.setActivityBehavior(bpmnParse.getActivityBehaviorFactory().createMailActivityBehavior(serviceTask));
           
+        } else if (serviceTask.getType().equalsIgnoreCase("sms")) {
+            validateFieldDeclarationsForSms(bpmnParse, serviceTask, serviceTask.getFieldExtensions());
+            activity.setActivityBehavior(bpmnParse.getActivityBehaviorFactory().createSmsActivityBehavior(serviceTask));
+            
         } else if (serviceTask.getType().equalsIgnoreCase("mule")) {
           activity.setActivityBehavior(bpmnParse.getActivityBehaviorFactory().createMuleActivityBehavior(serviceTask, bpmnParse.getBpmnModel()));
           

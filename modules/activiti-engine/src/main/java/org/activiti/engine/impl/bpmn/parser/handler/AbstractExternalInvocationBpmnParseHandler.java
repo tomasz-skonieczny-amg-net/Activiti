@@ -57,6 +57,27 @@ public abstract class AbstractExternalInvocationBpmnParseHandler<T extends FlowN
       bpmnParse.getBpmnModel().addProblem("Text or html field should be provided", task);
     }
   }
+  
+  protected void validateFieldDeclarationsForSms(BpmnParse bpmnParse, Task task, List<FieldExtension> fieldExtensions) {
+	    boolean toDefined = false;
+	    boolean textOrHtmlDefined = false;
+	    
+	    for (FieldExtension fieldExtension : fieldExtensions) {
+	      if (fieldExtension.getFieldName().equals("to")) {
+	        toDefined = true;
+	      }
+	      if (fieldExtension.getFieldName().equals("text")) {
+	        textOrHtmlDefined = true;
+	      }
+	    }
+
+	    if (!toDefined) {
+	      bpmnParse.getBpmnModel().addProblem("No recipient is defined on the sms activity", task);
+	    }
+	    if (!textOrHtmlDefined) {
+	      bpmnParse.getBpmnModel().addProblem("Text field should be provided", task);
+	    }
+	  }
 
   protected void validateFieldDeclarationsForShell(BpmnParse bpmnParse, Task task, List<FieldExtension> fieldExtensions) {
     boolean shellCommandDefined = false;

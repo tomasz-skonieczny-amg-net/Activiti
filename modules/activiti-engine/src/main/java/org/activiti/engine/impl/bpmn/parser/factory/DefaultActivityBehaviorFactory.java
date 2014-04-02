@@ -68,6 +68,7 @@ import org.activiti.engine.impl.bpmn.behavior.SequentialMultiInstanceBehavior;
 import org.activiti.engine.impl.bpmn.behavior.ServiceTaskDelegateExpressionActivityBehavior;
 import org.activiti.engine.impl.bpmn.behavior.ServiceTaskExpressionActivityBehavior;
 import org.activiti.engine.impl.bpmn.behavior.ShellActivityBehavior;
+import org.activiti.engine.impl.bpmn.behavior.SmsActivityBehavior;
 import org.activiti.engine.impl.bpmn.behavior.SubProcessActivityBehavior;
 import org.activiti.engine.impl.bpmn.behavior.TaskActivityBehavior;
 import org.activiti.engine.impl.bpmn.behavior.TerminateEndEventActivityBehavior;
@@ -384,5 +385,17 @@ public class DefaultActivityBehaviorFactory extends AbstractBehaviorFactory impl
   public CancelBoundaryEventActivityBehavior createCancelBoundaryEventActivityBehavior(CancelEventDefinition cancelEventDefinition) {
     return new CancelBoundaryEventActivityBehavior();
   }
+
+	public SmsActivityBehavior createSmsActivityBehavior(ServiceTask serviceTask) {
+		return createSmsActivityBehavior(serviceTask.getId(), serviceTask.getFieldExtensions());
+	}
+	
+	public SmsActivityBehavior createSmsActivityBehavior(SendTask sendTask) {
+		return createSmsActivityBehavior(sendTask.getId(), sendTask.getFieldExtensions());  
+	}
   
+	protected SmsActivityBehavior createSmsActivityBehavior(String taskId, List<FieldExtension> fields) {
+		List<FieldDeclaration> fieldDeclarations = createFieldDeclarations(fields);
+		return (SmsActivityBehavior) ClassDelegate.instantiateDelegate(SmsActivityBehavior.class, fieldDeclarations);
+	}
 }

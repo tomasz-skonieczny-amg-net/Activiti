@@ -47,6 +47,9 @@ public class SendTaskParseHandler extends AbstractExternalInvocationBpmnParseHan
       if (sendTask.getType().equalsIgnoreCase("mail")) {
         validateFieldDeclarationsForEmail(bpmnParse, sendTask, sendTask.getFieldExtensions());
         activity.setActivityBehavior(bpmnParse.getActivityBehaviorFactory().createMailActivityBehavior(sendTask));
+      } else if (sendTask.getType().equalsIgnoreCase("sms")) {
+          validateFieldDeclarationsForSms(bpmnParse, sendTask, sendTask.getFieldExtensions());
+          activity.setActivityBehavior(bpmnParse.getActivityBehaviorFactory().createSmsActivityBehavior(sendTask));
       } else if (sendTask.getType().equalsIgnoreCase("mule")) {
         activity.setActivityBehavior(bpmnParse.getActivityBehaviorFactory().createMuleActivityBehavior(sendTask, bpmnParse.getBpmnModel()));
       } else if (sendTask.getType().equalsIgnoreCase("camel")) {

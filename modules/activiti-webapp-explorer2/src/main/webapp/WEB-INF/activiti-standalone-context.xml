@@ -46,8 +46,6 @@
         <bean class="org.activiti.explorer.form.UserFormType"/>
         <bean class="org.activiti.explorer.form.ProcessDefinitionFormType"/> 
         <bean class="org.activiti.explorer.form.MonthFormType"/>
-        
-        <bean class="amg.activiti.engine.form.ButtonFormType"/>
       </list>
     </property>
   </bean>

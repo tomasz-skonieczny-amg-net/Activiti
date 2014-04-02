@@ -61,7 +61,14 @@ public class ServiceTaskJsonConverter extends BaseBpmnJsonConverter {
   	  setPropertyFieldValue(PROPERTY_MAILTASK_HTML, serviceTask, propertiesNode);
   	  setPropertyFieldValue(PROPERTY_MAILTASK_CHARSET, serviceTask, propertiesNode);
   	  
-  	} else {
+  	} else if ("sms".equalsIgnoreCase(serviceTask.getType())) {
+    	  
+    	  setPropertyFieldValue(PROPERTY_SMSTASK_TO, serviceTask, propertiesNode);
+    	  setPropertyFieldValue(PROPERTY_SMSTASK_FROM, serviceTask, propertiesNode);
+    	  setPropertyFieldValue(PROPERTY_SMSTASK_TEXT, serviceTask, propertiesNode);
+    	  setPropertyFieldValue(PROPERTY_SMSTASK_CHARSET, serviceTask, propertiesNode);
+    	  
+    } else {
   	
     	if (ImplementationType.IMPLEMENTATION_TYPE_CLASS.equals(serviceTask.getImplementationType())) {
     	  propertiesNode.put(PROPERTY_SERVICETASK_CLASS, serviceTask.getImplementation());

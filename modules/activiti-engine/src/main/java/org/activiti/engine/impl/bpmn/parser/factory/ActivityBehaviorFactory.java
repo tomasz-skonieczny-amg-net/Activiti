@@ -63,6 +63,7 @@ import org.activiti.engine.impl.bpmn.behavior.SequentialMultiInstanceBehavior;
 import org.activiti.engine.impl.bpmn.behavior.ServiceTaskDelegateExpressionActivityBehavior;
 import org.activiti.engine.impl.bpmn.behavior.ServiceTaskExpressionActivityBehavior;
 import org.activiti.engine.impl.bpmn.behavior.ShellActivityBehavior;
+import org.activiti.engine.impl.bpmn.behavior.SmsActivityBehavior;
 import org.activiti.engine.impl.bpmn.behavior.SubProcessActivityBehavior;
 import org.activiti.engine.impl.bpmn.behavior.TaskActivityBehavior;
 import org.activiti.engine.impl.bpmn.behavior.TerminateEndEventActivityBehavior;
@@ -131,6 +132,10 @@ public interface ActivityBehaviorFactory {
   public abstract MailActivityBehavior createMailActivityBehavior(ServiceTask serviceTask);
 
   public abstract MailActivityBehavior createMailActivityBehavior(SendTask sendTask);
+  
+  public abstract SmsActivityBehavior createSmsActivityBehavior(ServiceTask serviceTask);
+
+  public abstract SmsActivityBehavior createSmsActivityBehavior(SendTask sendTask);
 
   // We do not want a hard dependency on the Mule module, hence we return ActivityBehavior and instantiate 
   // the delegate instance using a string instead of the Class itself.

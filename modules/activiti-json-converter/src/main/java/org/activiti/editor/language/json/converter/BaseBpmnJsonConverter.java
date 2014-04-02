@@ -83,6 +83,8 @@ public abstract class BaseBpmnJsonConverter implements EditorJsonConstants, Sten
       ServiceTask serviceTask = (ServiceTask) flowElement;
       if ("mail".equalsIgnoreCase(serviceTask.getType())) {
         stencilId = STENCIL_TASK_MAIL;
+      } else if ("sms".equalsIgnoreCase(serviceTask.getType())) {
+          stencilId = STENCIL_TASK_SMS;
       } else {
         stencilId = getStencilId(flowElement);
       }

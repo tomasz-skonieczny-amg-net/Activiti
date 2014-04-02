@@ -176,6 +176,7 @@
     <simpleType>
       <restriction base="string">
         <enumeration value="mail"/>
+        <enumeration value="sms"/>
       </restriction>
     </simpleType>
   </attribute>

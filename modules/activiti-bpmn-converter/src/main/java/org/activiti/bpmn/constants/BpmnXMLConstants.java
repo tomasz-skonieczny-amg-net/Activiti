@@ -111,6 +111,8 @@ public interface BpmnXMLConstants {
   
   // fake element for mail task
   public static final String ELEMENT_TASK_MAIL = "mailTask";
+  //fake element for sms task
+  public static final String ELEMENT_TASK_SMS = "smsTask";
   
   public static final String ELEMENT_TASK = "task";
   public static final String ELEMENT_TASK_BUSINESSRULE = "businessRuleTask";

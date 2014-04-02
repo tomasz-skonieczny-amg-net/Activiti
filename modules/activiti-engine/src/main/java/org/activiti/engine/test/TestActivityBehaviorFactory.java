@@ -71,6 +71,7 @@ import org.activiti.engine.impl.bpmn.behavior.SequentialMultiInstanceBehavior;
 import org.activiti.engine.impl.bpmn.behavior.ServiceTaskDelegateExpressionActivityBehavior;
 import org.activiti.engine.impl.bpmn.behavior.ServiceTaskExpressionActivityBehavior;
 import org.activiti.engine.impl.bpmn.behavior.ShellActivityBehavior;
+import org.activiti.engine.impl.bpmn.behavior.SmsActivityBehavior;
 import org.activiti.engine.impl.bpmn.behavior.SubProcessActivityBehavior;
 import org.activiti.engine.impl.bpmn.behavior.TaskActivityBehavior;
 import org.activiti.engine.impl.bpmn.behavior.TerminateEndEventActivityBehavior;
@@ -207,6 +208,16 @@ public class TestActivityBehaviorFactory extends AbstractBehaviorFactory impleme
 	@Override
 	public MailActivityBehavior createMailActivityBehavior(SendTask sendTask) {
 		return wrappedActivityBehaviorFactory.createMailActivityBehavior(sendTask);
+	}
+	
+	@Override
+	public SmsActivityBehavior createSmsActivityBehavior(ServiceTask serviceTask) {
+		return wrappedActivityBehaviorFactory.createSmsActivityBehavior(serviceTask);
+	}
+
+	@Override
+	public SmsActivityBehavior createSmsActivityBehavior(SendTask sendTask) {
+		return wrappedActivityBehaviorFactory.createSmsActivityBehavior(sendTask);
 	}
 
 	@Override
@@ -381,5 +392,5 @@ public class TestActivityBehaviorFactory extends AbstractBehaviorFactory impleme
 		allServiceTasksNoOp = false;
 		NoOpServiceTask.reset();
 	}
-	
+
 }

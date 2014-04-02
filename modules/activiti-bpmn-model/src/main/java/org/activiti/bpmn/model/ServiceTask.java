@@ -21,6 +21,7 @@ import java.util.List;
 public class ServiceTask extends Task {
 
   public static final String MAIL_TASK = "mail";
+  public static final String SMS_TASK = "sms";
   
   protected String implementation;
   protected String implementationType;
