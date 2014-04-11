@@ -472,7 +472,7 @@ ORYX.Plugins.Save = Clazz.extend({
 		
 		var saveUri;
 		if(forceNew == false) {
-			saveUri = "../service/model/" + params.id + "/save";
+			saveUri = "../service/model/" + params.id + "/saveExt";
 		} else {
 			saveUri = "../service/model/new";
 		}
