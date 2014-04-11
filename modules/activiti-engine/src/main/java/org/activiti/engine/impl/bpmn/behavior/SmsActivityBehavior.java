@@ -13,9 +13,22 @@
 
 package org.activiti.engine.impl.bpmn.behavior;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.activiti.bpmn.converter.BpmnXMLConverter;
+import org.activiti.engine.ActivitiException;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.Expression;
+import org.activiti.engine.impl.context.Context;
 import org.activiti.engine.impl.pvm.delegate.ActivityExecution;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Tomasz Skonieczny
@@ -23,6 +36,8 @@ import org.activiti.engine.impl.pvm.delegate.ActivityExecution;
 public class SmsActivityBehavior extends AbstractBpmnActivityBehavior {
 
   private static final long serialVersionUID = 1L;
+
+  protected static final Logger LOGGER = LoggerFactory.getLogger(BpmnXMLConverter.class);
   
   protected Expression to;
   protected Expression from;
@@ -35,11 +50,60 @@ public class SmsActivityBehavior extends AbstractBpmnActivityBehavior {
     String textStr = getStringFromField(text, execution);
     String charSetStr = getStringFromField(charset, execution);
 
-    System.out.println(String.format("Sending SMS to: %s, from: %s, text: %s, charset: %s", toStr, fromStr, textStr, charSetStr));
+    
+    if (LOGGER.isDebugEnabled()) {
+      LOGGER.debug(String.format("Sending SMS to: %s, from: %s, text: %s, charset: %s", toStr, fromStr, textStr, charSetStr));
+    }
+    callSmsRestService(Context.getProcessEngineConfiguration().getSmsServiceUrl(), toStr, fromStr, textStr);
     	
     leave(execution);
   }
+  
+  protected boolean callSmsRestService(String endpoint, String to, String from, String text) {
+	  try {
+		  
+		URL url = new URL(endpoint);
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setDoOutput(true);
+		conn.setRequestMethod("POST");
+		conn.setRequestProperty("Content-Type", "application/json");
  
+		String input = String.format("{\"to\":\"%s\",\"from\":\"%s\",\"text\":\"%s\"}", to, from, text);
+ 
+		OutputStream os = conn.getOutputStream();
+		os.write(input.getBytes());
+		os.flush();
+ 
+		if (conn.getResponseCode() != HttpURLConnection.HTTP_CREATED && conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
+			throw new ActivitiException("SMS rest service failed! HTTP error code : "
+				+ conn.getResponseCode());
+		}
+ 
+		BufferedReader br = new BufferedReader(new InputStreamReader(
+				(conn.getInputStream())));
+ 
+		String output;
+		if (LOGGER.isDebugEnabled()) {
+		      LOGGER.debug("Output from Server:");
+		}
+		while ((output = br.readLine()) != null) {
+			if (LOGGER.isDebugEnabled()) {
+			      LOGGER.debug("\t" + output);
+			}
+		}
+ 
+		conn.disconnect();
+		
+		return true;
+	  } catch (MalformedURLException e) {
+		e.printStackTrace();
+	  } catch (IOException e) {
+		e.printStackTrace();
+	 }
+	  
+	 return false;
+  }
+  
   protected String[] splitAndTrim(String str) {
     if (str != null) {
       String[] splittedStrings = str.split(",");

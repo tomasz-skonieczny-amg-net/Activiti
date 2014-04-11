@@ -104,6 +104,9 @@ public abstract class ProcessEngineConfiguration implements EngineServices {
   protected boolean useTLS = false;
   protected String mailServerDefaultFrom = "activiti@localhost";
   protected String mailSessionJndi;
+  
+  protected String smsServiceUrl = "localhost/sms";
+
 
   protected String databaseType;
   protected String databaseSchemaUpdate = DB_SCHEMA_UPDATE_FALSE;
@@ -621,5 +624,13 @@ public abstract class ProcessEngineConfiguration implements EngineServices {
   public ProcessEngineConfiguration setJobExecutor(JobExecutor jobExecutor) {
     this.jobExecutor = jobExecutor;
     return this;
+  }
+  
+  public String getSmsServiceUrl() {
+	return smsServiceUrl;
+  }
+
+  public void setSmsServiceUrl(String smsServiceUrl) {
+	this.smsServiceUrl = smsServiceUrl;
   }
 }
