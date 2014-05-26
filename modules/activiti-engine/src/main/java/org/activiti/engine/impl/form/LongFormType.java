@@ -25,12 +25,12 @@ import org.activiti.engine.form.AbstractFormType;
  */
 public class LongFormType extends AbstractFormType {
     
-  List<String> validators;  
-  
-  public LongFormType() { }
+  public LongFormType() { 
+  }
 
   public LongFormType(List<String> validators) {
-    this.validators = validators;
+	this();
+    this.validators.addAll(validators);
   }
     
   public String getName() {
@@ -53,11 +53,6 @@ public class LongFormType extends AbstractFormType {
       return null;
     }
     return modelValue.toString();
-  }
-
-  @Override
-  public List<String> getValidators() {
-    return validators;
   }
 
 }

@@ -13,6 +13,7 @@
 
 package org.activiti.engine.form;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,8 @@ import java.util.Map;
  */
 public abstract class AbstractFormType implements FormType {
 
+  protected List<String> validators = new ArrayList<String>(); 
+	
   public abstract Object convertFormValueToModelValue(String propertyValue);
 
   public abstract String convertModelValueToFormValue(Object modelValue);
@@ -36,7 +39,7 @@ public abstract class AbstractFormType implements FormType {
   }
   
   public List<String> getValidators() {
-      return Collections.EMPTY_LIST;
+      return validators;
   }
   
   public Map<String, String> getValues() {

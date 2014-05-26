@@ -25,12 +25,10 @@ import org.activiti.engine.form.AbstractFormType;
  */
 public class StringFormType extends AbstractFormType {
     
-    List<String> validators;
-    
     public StringFormType() { }
     
     public StringFormType(List<String> validators) {
-        this.validators = validators;
+        this.validators.addAll(validators);
     }
 
   public String getName() {
@@ -48,12 +46,5 @@ public class StringFormType extends AbstractFormType {
   public String convertModelValueToFormValue(Object modelValue) {
     return (String) modelValue;
   }
-
-  @Override
-  public List<String> getValidators() {
-    return validators;
-  }
-
-
 
 }

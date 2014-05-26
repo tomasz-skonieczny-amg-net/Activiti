@@ -88,7 +88,6 @@ public class FormTypes {
             }
         }
         formType = new StringFormType(validators);
-        
     } else if (StringUtils.isNotEmpty(formProperty.getType())) {
       formType = formTypes.get(formProperty.getType());
       if (formType == null) {

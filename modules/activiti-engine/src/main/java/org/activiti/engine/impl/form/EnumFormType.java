@@ -26,11 +26,10 @@ import org.activiti.engine.form.AbstractFormType;
 public class EnumFormType extends AbstractFormType {
 
   protected Map<String, String> values;
-  protected List<String> validators;
 
   public EnumFormType(Map<String, String> values,  List<String> validators) {
     this.values = values;
-    this.validators = validators;
+    this.validators.addAll(validators);
   }
 
   public String getName() {
@@ -73,9 +72,5 @@ public class EnumFormType extends AbstractFormType {
   public Map<String, String> getValues() {
       return values;
   }
-//
-//  public List<String> getValidators() {
-//    return validators;
-//  }
 
 }

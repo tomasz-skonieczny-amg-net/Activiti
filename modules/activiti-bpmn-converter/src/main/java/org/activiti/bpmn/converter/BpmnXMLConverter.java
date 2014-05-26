@@ -162,8 +162,17 @@ public class BpmnXMLConverter implements BpmnXMLConstants {
   
   public void validateModel(InputStreamProvider inputStreamProvider) throws Exception {
     Schema schema = createSchema();
-    
     Validator validator = schema.newValidator();
+    
+    java.io.BufferedReader bufferedReader = new java.io.BufferedReader(new InputStreamReader(inputStreamProvider.getInputStream()));
+    String line = bufferedReader.readLine();
+    String txt = "";
+    while(line != null){
+        txt  += line; 
+        line = bufferedReader.readLine();
+    }
+    LOGGER.debug(txt);
+
     validator.validate(new StreamSource(inputStreamProvider.getInputStream()));
   }
   
@@ -226,13 +235,13 @@ public class BpmnXMLConverter implements BpmnXMLConstants {
     InputStreamReader in = null;
     try {
       in = new InputStreamReader(inputStreamProvider.getInputStream(), encoding);
-      if (LOGGER.isDebugEnabled()) {
+      //if (LOGGER.isDebugEnabled()) {
           try {
               LOGGER.debug(readString(inputStreamProvider.getInputStream()));
           } catch (IOException e1) {
               e1.printStackTrace();
           }
-      }
+      //}
       XMLStreamReader xtr = xif.createXMLStreamReader(in);
   
       try {
