@@ -859,7 +859,11 @@ public class DbSqlSession implements Session {
     if (ProcessEngine.VERSION.endsWith("-SNAPSHOT")) {
       libraryVersion = ProcessEngine.VERSION.substring(0, ProcessEngine.VERSION.length()-"-SNAPSHOT".length());
     }
-    int minorLibraryVersionNumber = Integer.parseInt(libraryVersion.substring(2));
+    String ver = libraryVersion.substring(2);
+    if(ver.contains(".")) {
+    	ver = ver.substring(0, ver.indexOf('.'));
+    }
+    int minorLibraryVersionNumber = Integer.parseInt(ver);
     
     while (minorDbVersionNumber<minorLibraryVersionNumber) {
       executeSchemaResource("upgrade", component, getResourceForDbOperation("upgrade", "upgradestep.5"+minorDbVersionNumber+".to.5"+(minorDbVersionNumber+1), component), true);
