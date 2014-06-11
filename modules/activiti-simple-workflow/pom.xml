@@ -7,10 +7,10 @@
 	<artifactId>activiti-simple-workflow</artifactId>
 
 	<parent>
-		<groupId>org.activiti</groupId>
+		<groupId>amg.activiti</groupId>
 		<artifactId>activiti-root</artifactId>
 		<relativePath>../..</relativePath>
-		<version>5.14</version>
+		<version>5.14.2</version>
 	</parent>
   
   <properties>
@@ -97,15 +97,15 @@
 	<dependencies>
 		<!-- BPMN model conversion -->
 		<dependency>
-			<groupId>org.activiti</groupId>
+			<groupId>amg.activiti</groupId>
 			<artifactId>activiti-bpmn-model</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.activiti</groupId>
+			<groupId>amg.activiti</groupId>
 			<artifactId>activiti-bpmn-converter</artifactId>
 		</dependency>
 		<dependency>
-		  <groupId>org.activiti</groupId>
+		  <groupId>amg.activiti</groupId>
 		  <artifactId>activiti-bpmn-layout</artifactId>
 		</dependency>
 		<!-- Json parsing -->
@@ -138,7 +138,7 @@
 			<scope>test</scope>
 		</dependency>
     <dependency>
-      <groupId>org.activiti</groupId>
+      <groupId>amg.activiti</groupId>
       <artifactId>activiti-engine</artifactId>
       <scope>test</scope>
     </dependency>

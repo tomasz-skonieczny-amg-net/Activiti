@@ -7,10 +7,10 @@
   <artifactId>activiti-bpmn-model</artifactId>
 
   <parent>
-    <groupId>org.activiti</groupId>
+    <groupId>amg.activiti</groupId>
     <artifactId>activiti-root</artifactId>
     <relativePath>../..</relativePath>
-    <version>5.14</version>
+    <version>5.14.2</version>
   </parent>
   
   <properties>

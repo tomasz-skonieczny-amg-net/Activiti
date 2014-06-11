@@ -8,16 +8,16 @@
   <packaging>bundle</packaging>
 
   <parent>
-    <groupId>org.activiti</groupId>
+    <groupId>amg.activiti</groupId>
     <artifactId>activiti-root</artifactId>
     <relativePath>../..</relativePath>
-    <version>5.14</version>
+    <version>5.14.2</version>
   </parent>
 
 
   <dependencies>
     <dependency>
-      <groupId>org.activiti</groupId>
+      <groupId>amg.activiti</groupId>
       <artifactId>activiti-spring</artifactId>
     </dependency>
     <dependency>

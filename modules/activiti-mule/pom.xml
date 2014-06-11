@@ -7,10 +7,10 @@
   <artifactId>activiti-mule</artifactId>
 
   <parent>
-    <groupId>org.activiti</groupId>
+    <groupId>amg.activiti</groupId>
     <artifactId>activiti-root</artifactId>
     <relativePath>../..</relativePath>
-    <version>5.14</version>
+    <version>5.14.2</version>
   </parent>
   
   <properties>
@@ -116,12 +116,12 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.activiti</groupId>
+      <groupId>amg.activiti</groupId>
       <artifactId>activiti-engine</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.activiti</groupId>
+      <groupId>amg.activiti</groupId>
       <artifactId>activiti-spring</artifactId>
       <scope>provided</scope>
     </dependency>

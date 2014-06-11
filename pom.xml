@@ -4,11 +4,11 @@
 
   <name>Activiti</name>
   <description>BPM and workflow engine</description>
-  <groupId>org.activiti</groupId>
+  <groupId>amg.activiti</groupId>
   <artifactId>activiti-root</artifactId>
 
   <packaging>pom</packaging>
-  <version>5.14</version>
+  <version>5.14.2</version>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.framework.version>3.1.2.RELEASE</spring.framework.version>
@@ -166,73 +166,73 @@
         <scope>test</scope>
       </dependency> 
       <dependency>
-        <groupId>org.activiti</groupId>
+        <groupId>amg.activiti</groupId>
         <artifactId>activiti-engine</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.activiti</groupId>
+        <groupId>amg.activiti</groupId>
         <artifactId>activiti-spring</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.activiti</groupId>
+        <groupId>amg.activiti</groupId>
         <artifactId>activiti-bpmn-model</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.activiti</groupId>
+        <groupId>amg.activiti</groupId>
         <artifactId>activiti-bpmn-converter</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.activiti</groupId>
+        <groupId>amg.activiti</groupId>
         <artifactId>activiti-json-converter</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.activiti</groupId>
+        <groupId>amg.activiti</groupId>
         <artifactId>activiti-explorer</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.activiti</groupId>
+        <groupId>amg.activiti</groupId>
         <artifactId>activiti-simple-workflow</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.activiti</groupId>
+        <groupId>amg.activiti</groupId>
         <artifactId>activiti-modeler</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.activiti</groupId>
+        <groupId>amg.activiti</groupId>
         <artifactId>activiti-common-rest</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.activiti</groupId>
+        <groupId>amg.activiti</groupId>
         <artifactId>activiti-diagram-rest</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.activiti</groupId>
+        <groupId>amg.activiti</groupId>
         <artifactId>activiti-rest</artifactId>
         <version>${project.version}</version>
       </dependency> 
       <dependency>
-        <groupId>org.activiti</groupId>
+        <groupId>amg.activiti</groupId>
         <artifactId>activiti-webapp-rest2</artifactId>
         <type>war</type>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.activiti</groupId>
+        <groupId>amg.activiti</groupId>
         <artifactId>activiti-cxf</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>org.activiti</groupId>
+        <groupId>amg.activiti</groupId>
         <artifactId>activiti-bpmn-layout</artifactId>
         <version>${project.version}</version>
       </dependency>
