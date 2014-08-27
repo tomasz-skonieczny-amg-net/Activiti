@@ -612,9 +612,9 @@ public class DbSqlSession implements Session {
       if (dbSqlSessionFactory.isDbHistoryUsed() && !isHistoryTablePresent()) {
         errorMessage = addMissingComponent(errorMessage, "history");
       }
-      if (dbSqlSessionFactory.isDbIdentityUsed() && !isIdentityTablePresent()) {
-        errorMessage = addMissingComponent(errorMessage, "identity");
-      }
+      //if (dbSqlSessionFactory.isDbIdentityUsed() && !isIdentityTablePresent()) {
+      //  errorMessage = addMissingComponent(errorMessage, "identity");
+      //}
       
       if (errorMessage!=null) {
         throw new ActivitiException("Activiti database problem: "+errorMessage);
