@@ -6,6 +6,7 @@
 	<name>Activiti - Webapp - Explorer V2</name>
 	<artifactId>activiti-webapp-explorer2</artifactId>
 	<packaging>war</packaging>
+	<version>5.14.2</version>
 
 	<parent>
 		<groupId>amg.activiti</groupId>
