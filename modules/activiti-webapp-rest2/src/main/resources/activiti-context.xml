@@ -12,14 +12,25 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
 	</bean>
 
-	<bean id="dataSource"
+<!-- 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="${jdbc.driver}" />
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
-	</bean>
+	</bean> -->
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">
+		<property name="targetDataSource">
 
+			<bean id="pooledDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+				<property name="jndiName" value="java:/ActivitiDS" />
+				<property name="lookupOnStartup" value="true" />
+			</bean>
+		</property>
+		<property name="reobtainTransactionalConnections" value="true" />
+	</bean>
+	
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
@@ -28,9 +39,9 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
 		<property name="dataSource" ref="dataSource" />
 		<property name="transactionManager" ref="transactionManager" />
-		<property name="databaseSchemaUpdate" value="true" />
-		<property name="mailServerHost" value="localhost" />
-		<property name="mailServerPort" value="5025" />
+		<property name="databaseSchemaUpdate" value="false" />
+		<property name="mailServerHost" value="smtpdev.amg.net.pl" />
+		<property name="mailServerPort" value="25" />
 		<property name="jobExecutorActivate" value="false" />
 	</bean>
 
