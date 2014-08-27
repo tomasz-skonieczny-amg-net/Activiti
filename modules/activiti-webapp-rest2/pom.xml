@@ -5,6 +5,7 @@
   <name>Activiti - Rest</name>
   <artifactId>activiti-webapp-rest2</artifactId>
   <packaging>war</packaging>
+   <version>5.14.2</version>
 
   <parent>
     <groupId>amg.activiti</groupId>
